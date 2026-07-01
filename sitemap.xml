@@ -2,26 +2,31 @@
 <urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
   <url>
     <loc>https://opsfinitive.io/</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://opsfinitive.io/Plumbline.dc.html</loc>
+    <loc>https://opsfinitive.io/plumbline.html</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://opsfinitive.io/Blog.dc.html</loc>
+    <loc>https://opsfinitive.io/blog.html</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opsfinitive.io/Blog%20-%20Top%205%20Signs.dc.html</loc>
+    <loc>https://opsfinitive.io/blog-top-5-signs.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://opsfinitive.io/Blog%20-%20Why%20DevOps%20Partner.dc.html</loc>
+    <loc>https://opsfinitive.io/blog-why-devops-partner.html</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
