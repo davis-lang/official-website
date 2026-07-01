@@ -1,6 +1,6 @@
 # Opsfinitive Website
 
-Static marketing site for [Opsfinitive](https://opsfinitive.com). Built as Design Components (`*.dc.html`) and bundled into self-contained HTML, hosted on **Cloudflare Pages**.
+Static marketing site for [Opsfinitive](https://opsfinitive.com). Built as Design Components — DC for short — (`*.dc.html`) and bundled into self-contained HTML, hosted on **Cloudflare Workers**. The `.dc.html` files are the editable source files that can be opened directly in a browser for preview; the bundled output in `deploy/` is what gets served in production.
 
 ---
 
@@ -80,7 +80,7 @@ npm install -g wrangler
 
 ## Deployment Pipeline
 
-This project uses **Cloudflare Pages** for hosting. Here's how code gets to production:
+This project uses **Cloudflare Workers** for hosting. The repo is connected to Cloudflare for automatic builds and deployments.
 
 ```
   You edit *.dc.html
@@ -92,7 +92,8 @@ This project uses **Cloudflare Pages** for hosting. Here's how code gets to prod
   Push to GitHub (main branch)
        │
        ▼
-  Cloudflare Pages auto-deploys
+  Cloudflare auto-deploys via
+  npx wrangler deploy
        │
        ▼
   Live at opsfinitive.com
@@ -100,18 +101,19 @@ This project uses **Cloudflare Pages** for hosting. Here's how code gets to prod
 
 ### How it works
 
-| Setting               | Value                                |
-|----------------------|--------------------------------------|
-| **Platform**          | Cloudflare Pages                     |
-| **GitHub repo**       | `davis-lang/official-website`        |
-| **Production branch** | `main`                               |
-| **Preview branch**    | `dev` (and any PR branches)          |
-| **Build command**     | _(none — pre-bundled static files)_  |
-| **Build output dir**  | `deploy`                             |
+| Setting                       | Value                                         |
+|-------------------------------|-----------------------------------------------|
+| **Platform**                  | Cloudflare Workers                            |
+| **GitHub repo**               | `davis-lang/official-website`                 |
+| **Production branch**         | `main`                                        |
+| **Preview branches**          | `dev` and any PR branches (auto-enabled)      |
+| **Build command**             | _(none)_                                      |
+| **Deploy command**            | `npx wrangler deploy`                         |
+| **Root directory**            | `/`                                           |
 
 - **Production deploys** happen automatically when commits land on `main`.
-- **Preview deploys** are generated for every push to `dev` or any open pull request branch. Cloudflare provides a unique preview URL for each (e.g. `abc123.official-website.pages.dev`).
-- You can also deploy manually: `wrangler pages deploy deploy`
+- **Preview deploys** are generated for every push to `dev` or any open pull request branch. Cloudflare provides a unique preview URL for each.
+- You can also deploy manually: `npx wrangler deploy`
 
 ---
 
