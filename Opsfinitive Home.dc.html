@@ -431,30 +431,26 @@
 
       <div style="display:flex;flex-direction:column;gap:22px;margin-top:42px;">
         <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;min-width:780px;table-layout:fixed;">
-            <thead>
-              <tr>
-                <th style="padding:12px 10px;text-align:left;border-bottom:1px solid rgba(17,17,17,0.1);width:22%;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;font-weight:600;color:#9b9a90;">Domain / Vertical</span></th>
-                <sc-for list="{{ columns }}" as="col" hint-placeholder-count="6">
-                  <th onMouseEnter="{{ col.onEnter }}" onMouseLeave="{{ col.onLeave }}" style="{{ col.thStyle }}">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;opacity:0.6;">{{ col.num }}</span><span style="font-size:11.5px;font-weight:700;font-family:'Schibsted Grotesk',sans-serif;letter-spacing:-0.01em;">{{ col.label }}</span></div>
-                  </th>
-                </sc-for>
-              </tr>
-            </thead>
-            <tbody>
-              <sc-for list="{{ rows }}" as="row" hint-placeholder-count="6">
-                <tr onMouseEnter="{{ row.onEnter }}" onMouseLeave="{{ row.onLeave }}" style="{{ row.rowStyle }}">
-                  <td style="padding:11px 10px;text-align:left;white-space:nowrap;"><span style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#26261f;"><span style="height:6px;width:6px;border-radius:999px;background:#b4b3a8;display:inline-block;"></span>{{ row.label }}</span></td>
-                  <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="6">
-                    <td onClick="{{ cell.onClick }}" onMouseEnter="{{ cell.onEnter }}" onMouseLeave="{{ cell.onLeave }}" style="padding:6px;text-align:center;cursor:pointer;">
-                      <div style="{{ cell.cellStyle }}"><span style="{{ cell.dotStyle }}"></span></div>
-                    </td>
-                  </sc-for>
-                </tr>
+          <div style="min-width:780px;">
+            <div style="display:grid;grid-template-columns:22% repeat(6,1fr);border-bottom:1px solid rgba(17,17,17,0.1);align-items:end;">
+              <div style="padding:12px 10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;font-weight:600;color:#9b9a90;">Domain / Vertical</span></div>
+              <sc-for list="{{ columns }}" as="col" hint-placeholder-count="6">
+                <div onMouseEnter="{{ col.onEnter }}" onMouseLeave="{{ col.onLeave }}" style="{{ col.thStyle }}">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;opacity:0.6;">{{ col.num }}</span><span style="font-size:11.5px;font-weight:700;font-family:'Schibsted Grotesk',sans-serif;letter-spacing:-0.01em;">{{ col.label }}</span></div>
+                </div>
               </sc-for>
-            </tbody>
-          </table>
+            </div>
+            <sc-for list="{{ rows }}" as="row" hint-placeholder-count="6">
+              <div onMouseEnter="{{ row.onEnter }}" onMouseLeave="{{ row.onLeave }}" style="{{ row.rowStyle }}">
+                <div style="padding:11px 10px;white-space:nowrap;display:flex;align-items:center;"><span style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#26261f;"><span style="height:6px;width:6px;border-radius:999px;background:#b4b3a8;display:inline-block;"></span>{{ row.label }}</span></div>
+                <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="6">
+                  <div onClick="{{ cell.onClick }}" onMouseEnter="{{ cell.onEnter }}" onMouseLeave="{{ cell.onLeave }}" style="padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+                    <div style="{{ cell.cellStyle }}"><span style="{{ cell.dotStyle }}"></span></div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
         </div>
 
         <sc-if value="{{ hasBrief }}" hint-placeholder-val="{{ true }}">
@@ -970,7 +966,7 @@ class Component extends DCLogic {
       label: r.label,
       onEnter: () => this.setState({ hoverRow: r.key }),
       onLeave: () => this.setState({ hoverRow: null }),
-      rowStyle: { borderBottom: '1px solid rgba(17,17,17,0.06)', transition: 'background .2s', background: A.hoverRow === r.key ? 'rgba(17,17,17,0.02)' : 'transparent' },
+      rowStyle: { display: 'grid', gridTemplateColumns: '22% repeat(6, 1fr)', alignItems: 'center', borderBottom: '1px solid rgba(17,17,17,0.06)', transition: 'background .2s', background: A.hoverRow === r.key ? 'rgba(17,17,17,0.02)' : 'transparent' },
       cells: r.status.map((ready, ci) => {
         const colKey = this.matrixCols[ci].key;
         const isSel = A.selRow === r.key && A.selCol === colKey;
