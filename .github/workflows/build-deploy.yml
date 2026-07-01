@@ -1,0 +1,36 @@
+name: Build deploy/
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, dev]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build deploy/
+        run: node build.mjs
+
+      - name: Check for deploy/ changes
+        id: diff
+        run: |
+          git diff --quiet deploy/ && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit updated deploy/
+        if: steps.diff.outputs.changed == 'true' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add deploy/
+          git commit -m "Rebuild deploy/ via build.mjs [skip ci]"
+          git push
+
+      - name: Warn if deploy/ is stale (PR check)
+        if: steps.diff.outputs.changed == 'true' && github.event_name == 'pull_request'
+        run: |
+          echo "::warning::deploy/ is out of date. Run 'node build.mjs' and commit the result."
+          exit 1
