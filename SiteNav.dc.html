@@ -101,7 +101,7 @@ class Component extends DCLogic {
     const solid = !overlay || this.state.scrolled || menuOpen;
 
     const navStyle = {
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      position: overlay ? 'fixed' : 'sticky', top: 0, left: 0, right: 0, zIndex: 50,
       transition: menuOpen ? 'none' : 'background .3s, backdrop-filter .3s, border-color .3s',
       background: menuOpen ? '#ffffff' : (solid ? 'rgba(251,251,249,0.9)' : 'transparent'),
       backdropFilter: menuOpen ? 'none' : (solid ? 'saturate(180%) blur(14px)' : 'none'),
