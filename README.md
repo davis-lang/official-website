@@ -1,6 +1,6 @@
 # Opsfinitive Website
 
-Static marketing site for [Opsfinitive](https://opsfinitive.com). Built as Design Components — DC for short — (`*.dc.html`) and bundled into self-contained HTML, hosted on **Cloudflare Workers**. The `.dc.html` files are the editable source files that can be opened directly in a browser for preview; the bundled output in `deploy/` is what gets served in production.
+Static marketing site for [Opsfinitive](https://opsfinitive.io). Built as Design Components — DC for short — (`*.dc.html`) and bundled into self-contained HTML, hosted on **Cloudflare Workers**. The `.dc.html` files are the editable source files that can be opened directly in a browser for preview; the bundled output in `deploy/` is what gets served in production.
 
 ---
 
@@ -89,14 +89,23 @@ This project uses **Cloudflare Workers** for hosting. The repo is connected to C
   Bundle into deploy/
        │
        ▼
-  Push to GitHub (main branch)
+  Push to a feature branch
+       │
+       ▼
+  Open a PR against dev → preview deploy
+       │
+       ▼
+  Merge to dev → verify on preview
+       │
+       ▼
+  Maintainer merges dev → main
        │
        ▼
   Cloudflare auto-deploys via
   npx wrangler deploy
        │
        ▼
-  Live at opsfinitive.com
+  Live at opsfinitive.io
 ```
 
 ### How it works
@@ -179,7 +188,7 @@ We welcome contributions! Please follow these guidelines:
 ## Branch Strategy
 
 ```
-main  ◄──── production (auto-deploys to opsfinitive.com)
+main  ◄──── production (auto-deploys to opsfinitive.io)
  │
  └── dev  ◄──── integration branch (preview deploys)
       │
@@ -190,7 +199,7 @@ main  ◄──── production (auto-deploys to opsfinitive.com)
 
 | Branch    | Purpose                          | Deploys to                          | Who can push |
 |-----------|----------------------------------|-------------------------------------|--------------|
-| `main`    | Production                       | `opsfinitive.com`                   | Maintainers only (via merge from `dev`) |
+| `main`    | Production                       | `opsfinitive.io`                   | Maintainers only (via merge from `dev`) |
 | `dev`     | Integration / staging            | Preview URL on Cloudflare Pages     | Via PR only  |
 | `feature/*`, `fix/*` | Individual work       | Preview URL per PR                  | Contributors |
 
