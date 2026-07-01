@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    @keyframes opFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @keyframes opPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    @keyframes opSpin { to { transform: rotate(360deg); } }
+    .op-scroll::-webkit-scrollbar { width: 6px; }
+    .op-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.14); border-radius: 3px; }
+    .op-scroll::-webkit-scrollbar-track { background: transparent; }
+  </style>
+</helmet>
+<div ref="{{ rootRef }}" style="--accent:#2f4bde;--accent-tint:rgba(47,75,222,0.10);--accent-bd:rgba(47,75,222,0.32);background:#fbfbf9;color:#0e0e0c;font-family:'Hanken Grotesk',system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;">
+
+  <!-- ============ SECTION 1 · OUTAGE SANDBOX ============ -->
+  <section style="padding:80px 0 64px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:26px;padding:30px;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(17,17,17,0.02);">
+
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(17,17,17,0.07);padding-bottom:24px;">
+          <div style="max-width:600px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">Interactive Operational Sandbox</span>
+            </div>
+            <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#0e0e0c;margin:12px 0 0;">Watch Applied AI solve an outage<span style="color:var(--accent);">.</span></h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.55;color:#56554e;max-width:46ch;">Simulate a database connection spike outage. Watch how the pipeline acts deterministically, governed by safety loops.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <sc-if value="{{ showReset }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ onReset }}" style="display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:rgba(17,17,17,0.04);border:1px solid rgba(17,17,17,0.1);color:#3f3e37;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:0.04em;border-radius:12px;cursor:pointer;">{{ resetIcon }} RESET SANDBOX</button>
+            </sc-if>
+            <sc-if value="{{ showRun }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ onRun }}" disabled="{{ isRunning }}" style="{{ runBtnStyle }}">{{ runIcon }} {{ runLabel }}</button>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:7fr 5fr;gap:30px;margin-top:30px;align-items:stretch;">
+
+          <div style="position:relative;display:flex;flex-direction:column;gap:14px;">
+            <div style="position:absolute;left:40px;top:26px;bottom:26px;width:2.5px;background:rgba(17,17,17,0.07);z-index:0;"></div>
+            <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ progressStyle }}"></div>
+            </sc-if>
+            <sc-for list="{{ steps }}" as="step" hint-placeholder-count="5">
+              <div style="{{ step.nodeStyle }}">
+                <div style="{{ step.badgeStyle }}">{{ step.iconEl }}</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                    <h4 style="{{ step.titleStyle }}">{{ step.title }}</h4>
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#b4b3a8;text-transform:uppercase;flex-shrink:0;">{{ step.phase }}</span>
+                  </div>
+                  <p style="{{ step.textStyle }}">{{ step.text }}</p>
+                  <sc-if value="{{ step.isCompleted }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0f8a5b;background:#ecfdf5;border:1px solid #a7f3d0;padding:3px 9px;border-radius:8px;letter-spacing:0.02em;">SUCCESS // {{ step.successText }}</div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;flex-direction:column;background:#0e0e0c;border:1px solid #000;border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(17,17,17,0.13);min-height:460px;">
+            <div style="background:rgba(255,255,255,0.04);padding:12px 14px;border-bottom:1px solid rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+              <div style="display:flex;align-items:center;gap:8px;color:#75746b;">{{ terminalIcon }}<span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#a8a79c;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Telemetry Log Terminal</span></div>
+              <div style="display:flex;gap:6px;"><span style="height:8px;width:8px;border-radius:999px;background:rgba(244,63,94,0.6);"></span><span style="height:8px;width:8px;border-radius:999px;background:rgba(245,158,11,0.6);"></span><span style="height:8px;width:8px;border-radius:999px;background:rgba(16,185,129,0.6);"></span></div>
+            </div>
+            <div class="op-scroll" style="padding:16px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.5;color:#a8a79c;">
+              <sc-if value="{{ hasLogs }}" hint-placeholder-val="{{ false }}">
+                <sc-for list="{{ logs }}" as="log" hint-placeholder-count="3">
+                  <div style="display:flex;gap:8px;align-items:flex-start;animation:opFade .25s;">
+                    <span style="color:#56554e;flex-shrink:0;font-size:10px;user-select:none;">{{ log.time }}</span>
+                    <span style="{{ log.style }}">{{ log.message }}</span>
+                  </div>
+                </sc-for>
+              </sc-if>
+              <sc-if value="{{ noLogs }}" hint-placeholder-val="{{ true }}">
+                <div style="margin:auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;color:#54534b;">{{ terminalIdleIcon }}<span style="font-size:10px;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Terminal idle. Re-trigger sandbox simulation above.</span></div>
+              </sc-if>
+            </div>
+            <div style="background:rgba(255,255,255,0.03);padding:11px 12px;border-top:1px solid rgba(0,0,0,0.4);flex-shrink:0;display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#75746b;">
+              <span style="color:#a8a79c;font-weight:700;animation:opPulse 1.4s infinite;">&gt;</span>
+              <input type="text" readOnly="{{ true }}" placeholder="{{ inputPlaceholder }}" style="background:transparent;border:none;outline:none;flex:1;color:#a8a79c;font-family:'IBM Plex Mono',monospace;font-size:10px;pointer-events:none;" />
+              <span>UTF-8 // TLS_SEC</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 · THE LAYERS WE OPERATE ============ -->
+  <section style="padding:72px 0;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">The layers we operate</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:16ch;">We act at every layer of how you run<span style="color:var(--accent);">.</span></h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#56554e;max-width:52ch;">Each layer runs on the one below it. We can come in anywhere — and take you all the way up to governed, agentic operations.</p>
+
+      <div style="display:grid;grid-template-columns:5fr 7fr;gap:30px;margin-top:42px;align-items:stretch;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ layers }}" as="layer" hint-placeholder-count="6">
+            <button onClick="{{ layer.onSelect }}" style="{{ layer.btnStyle }}">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div style="{{ layer.iconWrapStyle }}">{{ layer.iconEl }}</div>
+                <div>
+                  <span style="{{ layer.numStyle }}">LAYER {{ layer.number }}</span>
+                  <span style="display:block;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:-0.01em;color:#0e0e0c;margin-top:2px;">{{ layer.name }}</span>
+                </div>
+              </div>
+              <span style="{{ layer.chevStyle }}">{{ chevronIcon }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;flex-direction:column;justify-content:space-between;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:18px;overflow:hidden;box-shadow:0 1px 0 rgba(17,17,17,0.02);">
+          <div style="padding:30px 32px;flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;">{{ sel.iconEl }}<span>Layer {{ sel.number }} // Operational Standard</span></div>
+            <h3 style="margin:12px 0 0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,28px);letter-spacing:-0.02em;color:#0e0e0c;">{{ sel.name }}</h3>
+            <p style="margin:16px 0 0;font-size:14.5px;line-height:1.6;color:#56554e;">{{ sel.description }}</p>
+            <div style="margin-top:24px;">
+              <h4 style="margin:0 0 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9b9a90;">Representative Offerings</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <sc-for list="{{ sel.offerings }}" as="off" hint-placeholder-count="3">
+                  <span style="padding:7px 13px;background:rgba(17,17,17,0.03);border:1px solid rgba(17,17,17,0.08);border-radius:10px;font-size:12.5px;font-weight:600;color:#56554e;">{{ off }}</span>
+                </sc-for>
+              </div>
+            </div>
+            <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(17,17,17,0.07);display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9b9a90;">Runs across:</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <sc-for list="{{ sel.runsAcross }}" as="dom" hint-placeholder-count="3">
+                  <span style="font-size:13px;font-weight:600;color:#3f3e37;">{{ dom }} •</span>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:rgba(17,17,17,0.02);border-top:1px solid rgba(17,17,17,0.07);padding:8px;">
+            <div style="background:#fff;border-radius:12px;margin:8px;border:1px solid rgba(17,17,17,0.07);position:relative;overflow:hidden;min-height:198px;">
+
+              <sc-if value="{{ isITSM }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">SLA Engine // Live Service Desk</span><span style="color:#0f8a5b;display:flex;align-items:center;gap:5px;"><span style="height:6px;width:6px;border-radius:999px;background:#0f8a5b;animation:opPulse 1.4s infinite;"></span>ONLINE</span></div>
+                  <div style="display:flex;flex-direction:column;gap:7px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><div><div style="color:#9b9a90;font-size:9px;">CORRELATED STATUS</div><div style="color:#26261f;font-weight:600;font-size:11px;">Correlated to 1 Root Cause</div></div><span style="background:#ecfdf5;color:#0f8a5b;padding:2px 8px;border-radius:6px;border:1px solid #a7f3d0;font-size:10px;">Remediated</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><div><div style="color:#9b9a90;font-size:9px;">CMDB HYGIENE</div><div style="color:#26261f;font-weight:600;font-size:11px;">Config drift auto-remediated</div></div><span style="background:#ecfdf5;color:#0f8a5b;padding:2px 8px;border-radius:6px;border:1px solid #a7f3d0;font-size:10px;">Success</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><div><div style="color:#9b9a90;font-size:9px;">CHANGE APPROVALS</div><div style="color:#26261f;font-weight:600;font-size:11px;">Change auto-approved • policy</div></div><span style="background:#ecfdf5;color:#0f8a5b;padding:2px 8px;border-radius:6px;border:1px solid #a7f3d0;font-size:10px;">Approved</span></div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:1px solid rgba(17,17,17,0.06);padding-top:9px;">
+                    <div style="background:rgba(17,17,17,0.02);padding:9px;border-radius:9px;text-align:center;border:1px solid rgba(17,17,17,0.06);"><div style="font-size:18px;font-weight:700;color:#0e0e0c;">1</div><div style="color:#9b9a90;font-size:8px;text-transform:uppercase;letter-spacing:0.14em;margin-top:2px;">Active Incidents</div></div>
+                    <div style="background:rgba(17,17,17,0.02);padding:9px;border-radius:9px;text-align:center;border:1px solid rgba(17,17,17,0.06);"><div style="font-size:18px;font-weight:700;color:#0f8a5b;">0</div><div style="color:#9b9a90;font-size:8px;text-transform:uppercase;letter-spacing:0.14em;margin-top:2px;">Outages Today</div></div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isNetwork }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">BGP &amp; Topology Observability</span><span style="color:var(--accent);animation:opPulse 1.4s infinite;font-weight:600;">SCANNING</span></div>
+                  <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="display:flex;justify-content:space-between;color:#9b9a90;font-size:9px;padding-bottom:1px;"><span>GATEWAY INTERFACES</span><span>LATENCY / DRIFT</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:500;">BGP-WAN-PRI-01 (US-East)</span><span style="color:#0f8a5b;font-weight:600;">12ms // 0.00%</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:500;">BGP-WAN-SEC-02 (EU-West)</span><span style="color:#0f8a5b;font-weight:600;">41ms // 0.00%</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:500;">Anycast DNS Sync status</span><span style="color:#0f8a5b;font-weight:600;">Synced // Active</span></div>
+                  </div>
+                  <div style="background:rgba(17,17,17,0.02);padding:9px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);font-size:9px;color:#75746b;"><div style="color:#9b9a90;">ACTIVE CONTROLLERS</div><div style="color:#3f3e37;margin-top:2px;font-weight:700;">Arista CloudVision • Integration Verified</div><div style="width:100%;background:rgba(17,17,17,0.1);height:4px;margin-top:7px;border-radius:999px;overflow:hidden;"><div style="background:#0e0e0c;height:100%;width:85%;"></div></div></div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isDevsecops }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Continuous Auditing &amp; Compliance</span><span style="color:#0f8a5b;font-weight:600;font-size:10px;">98.9% SECURE</span></div>
+                  <div style="display:flex;flex-direction:column;gap:8px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><span style="display:flex;align-items:center;gap:8px;color:#3f3e37;"><span style="color:#0f8a5b;display:inline-flex;">{{ checkSmIcon }}</span>ISO-27001 Readiness Engine</span><span style="color:#0f8a5b;font-weight:600;">PASSED</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><span style="display:flex;align-items:center;gap:8px;color:#3f3e37;"><span style="color:#0f8a5b;display:inline-flex;">{{ checkSmIcon }}</span>Dynamic Secret Rotator (Vault)</span><span style="color:#9b9a90;">ACTIVE</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:#fffbeb;padding:8px 10px;border:1px solid #fde68a;border-radius:9px;"><span style="display:flex;align-items:center;gap:8px;color:#92400e;"><span style="color:#d97706;display:inline-flex;">{{ alertSmIcon }}</span>1 CVE Container Scan Warning</span><span style="color:#b45309;font-size:10px;background:#fef3c7;padding:2px 7px;border-radius:6px;border:1px solid #fde68a;">Triage Queue</span></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#9b9a90;padding-top:8px;border-top:1px solid rgba(17,17,17,0.06);"><span>LAST AUDIT: 4 MINS AGO</span><span style="display:flex;align-items:center;gap:5px;">{{ rotateSmIcon }} RE-AUDIT</span></div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isDelivery }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Canary Dispatcher // Argo Rollout</span><span style="background:rgba(17,17,17,0.05);color:#3f3e37;font-size:9px;padding:2px 8px;border-radius:6px;border:1px solid rgba(17,17,17,0.08);font-weight:700;">Active v2.4.1</span></div>
+                  <div style="text-align:center;">
+                    <div style="color:#9b9a90;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Traffic Distribution Weight</div>
+                    <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:#75746b;margin-bottom:5px;"><span>Stable v1</span><span>Canary v2</span></div>
+                    <div style="display:flex;height:22px;border-radius:7px;overflow:hidden;border:1px solid rgba(17,17,17,0.08);"><div style="background:rgba(17,17,17,0.12);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#3f3e37;width:85%;">85%</div><div style="background:#0e0e0c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;width:15%;">15%</div></div>
+                    <div style="font-size:9px;color:#9b9a90;margin-top:7px;">No anomalies detected in canary. Advancing automatically...</div>
+                  </div>
+                  <div style="background:rgba(17,17,17,0.02);padding:9px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);display:flex;justify-content:space-between;align-items:center;font-size:10px;"><div><div style="color:#9b9a90;">CANARY METRIC GATE</div><div style="color:#3f3e37;font-weight:600;">Latency threshold: &lt; 80ms</div></div><div style="color:#0f8a5b;font-weight:600;">34ms avg (Passed)</div></div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isAgentic }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Governed Agent Execution Loop</span><span style="color:#75746b;animation:opPulse 1.6s infinite;font-weight:600;">AGENT IDLE</span></div>
+                  <div style="background:rgba(17,17,17,0.02);padding:11px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);display:flex;flex-direction:column;gap:7px;">
+                    <div style="color:#9b9a90;font-size:9px;">LAST ACTIONS TRIGGERED BY AGENTS</div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;padding-bottom:6px;border-bottom:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:600;">Auto-scale DB Replica pool</span><span style="color:#0f8a5b;font-weight:700;">Approved</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;padding-bottom:6px;border-bottom:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:600;">Clear cache on web-gateway-03</span><span style="color:#0f8a5b;font-weight:700;">Completed</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;"><span style="color:#3f3e37;font-weight:600;">Reboot secondary BGP tunnel</span><span style="color:#9b9a90;">Awaiting Maker Gate</span></div>
+                  </div>
+                  <div style="font-size:8px;color:#9b9a90;text-align:center;text-transform:uppercase;letter-spacing:0.1em;">Safety Boundary: Blast Radius &lt; 20% system weight</div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isObservability }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Observability Engine // Torrent Filter</span><span style="color:#0f8a5b;font-weight:700;">CLEAN TELEMETRY</span></div>
+                  <div style="text-align:center;padding:6px 0;"><div style="font-size:24px;font-weight:700;color:#0e0e0c;letter-spacing:-0.02em;line-height:1;">14,802 / Sec</div><div style="font-size:8px;color:#9b9a90;margin-top:6px;text-transform:uppercase;letter-spacing:0.1em;">Telemetry Events Scanned</div></div>
+                  <div style="background:rgba(17,17,17,0.02);padding:10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><div style="color:#9b9a90;font-size:9px;">CORRELATION RATIO</div><div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:2px;"><span style="color:#26261f;font-weight:700;">1 correlated root incident</span><span style="color:#75746b;font-weight:700;font-size:10px;">From 1,294 Alerts</span></div><p style="font-size:8px;color:#9b9a90;margin:6px 0 0;">Noise reduction ratio: 99.92%. Operations team notified via PagerDuty.</p></div>
+                </div>
+              </sc-if>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 · LAYERS × VERTICALS MATRIX ============ -->
+  <section style="padding:72px 0;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">Layers × Verticals</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:18ch;">Every layer. Every domain. One operating model<span style="color:var(--accent);">.</span></h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#56554e;max-width:54ch;">The disciplines are horizontal; your domain is the context. We carry the same engineering rigour across all of them — and adapt the specifics to where you operate.</p>
+
+      <div style="display:flex;flex-direction:column;gap:22px;margin-top:42px;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;min-width:780px;">
+            <thead>
+              <tr>
+                <th style="padding:12px 10px;text-align:left;border-bottom:1px solid rgba(17,17,17,0.1);width:22%;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;font-weight:600;color:#9b9a90;">Domain / Vertical</span></th>
+                <sc-for list="{{ columns }}" as="col" hint-placeholder-count="6">
+                  <th onMouseEnter="{{ col.onEnter }}" onMouseLeave="{{ col.onLeave }}" style="{{ col.thStyle }}">
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;opacity:0.6;">{{ col.num }}</span><span style="font-size:11.5px;font-weight:700;font-family:'Schibsted Grotesk',sans-serif;letter-spacing:-0.01em;">{{ col.label }}</span></div>
+                  </th>
+                </sc-for>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ rows }}" as="row" hint-placeholder-count="6">
+                <tr onMouseEnter="{{ row.onEnter }}" onMouseLeave="{{ row.onLeave }}" style="{{ row.rowStyle }}">
+                  <td style="padding:11px 10px;text-align:left;white-space:nowrap;"><span style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#26261f;"><span style="height:6px;width:6px;border-radius:999px;background:#b4b3a8;display:inline-block;"></span>{{ row.label }}</span></td>
+                  <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="6">
+                    <td onClick="{{ cell.onClick }}" onMouseEnter="{{ cell.onEnter }}" onMouseLeave="{{ cell.onLeave }}" style="padding:6px;text-align:center;cursor:pointer;">
+                      <div style="{{ cell.cellStyle }}"><span style="{{ cell.dotStyle }}"></span></div>
+                    </td>
+                  </sc-for>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+
+        <sc-if value="{{ hasBrief }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:16px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;animation:opFade .3s;box-shadow:0 1px 0 rgba(17,17,17,0.02);">
+            <div style="padding:11px;background:rgba(17,17,17,0.02);border:1px solid rgba(17,17,17,0.08);border-radius:12px;color:var(--accent);flex-shrink:0;">{{ infoIcon }}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:#9b9a90;">Capability Matrix Spot</span>
+                <span style="font-size:12px;background:rgba(17,17,17,0.03);color:#26261f;padding:2px 10px;border-radius:999px;border:1px solid rgba(17,17,17,0.08);font-weight:600;">{{ brief.rowName }}</span>
+                <span style="color:#9b9a90;font-size:12px;">×</span>
+                <span style="font-size:12px;background:rgba(17,17,17,0.03);color:#26261f;padding:2px 10px;border-radius:999px;border:1px solid rgba(17,17,17,0.08);font-weight:600;">{{ brief.colName }}</span>
+                <sc-if value="{{ brief.isReady }}" hint-placeholder-val="{{ true }}"><span style="font-size:9px;text-transform:uppercase;font-weight:700;letter-spacing:0.12em;color:#0f8a5b;background:#ecfdf5;border:1px solid #a7f3d0;padding:3px 8px;border-radius:7px;">Deep Delivery Ready</span></sc-if>
+                <sc-if value="{{ brief.notReady }}" hint-placeholder-val="{{ false }}"><span style="font-size:9px;text-transform:uppercase;font-weight:700;letter-spacing:0.12em;color:#75746b;background:#fff;border:1px solid rgba(17,17,17,0.1);padding:3px 8px;border-radius:7px;">Custom On Request</span></sc-if>
+              </div>
+              <p style="margin:9px 0 0;font-size:14px;line-height:1.55;color:#56554e;">{{ brief.brief }}</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;align-items:center;gap:18px;justify-content:flex-end;padding-top:6px;border-top:1px solid rgba(17,17,17,0.06);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9b9a90;">
+          <span style="display:flex;align-items:center;gap:7px;"><span style="height:9px;width:9px;border-radius:999px;background:var(--accent);display:inline-block;"></span>Deep, repeated delivery</span>
+          <span style="display:flex;align-items:center;gap:7px;"><span style="height:7px;width:7px;border-radius:999px;background:rgba(17,17,17,0.18);display:inline-block;"></span>Custom integration ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 · THE PAYOFF ============ -->
+  <section style="padding:72px 0 96px;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">The Payoff</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:16ch;">What changes when operations run themselves<span style="color:var(--accent);">.</span></h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#56554e;max-width:52ch;">Illustrative of a typical engagement arc — where you land depends on where you start.</p>
+
+      <div style="background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:20px;padding:30px;margin-top:42px;box-shadow:0 1px 0 rgba(17,17,17,0.02);">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-bottom:24px;border-bottom:1px solid rgba(17,17,17,0.07);">
+          <div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:#9b9a90;">Arc Engagement Comparison</span>
+            <h3 style="margin:6px 0 0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.01em;color:#0e0e0c;">Simulate your operational state</h3>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(17,17,17,0.03);border:1px solid rgba(17,17,17,0.08);padding:6px;border-radius:12px;">
+            <button onClick="{{ onManual }}" style="{{ manualBtnStyle }}">Manual Operations</button>
+            <button onClick="{{ onAuto }}" style="{{ autoBtnStyle }}"><span style="color:#0f8a5b;display:inline-flex;">{{ sparkIcon }}</span>With Opsfinitive</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;gap:14px;justify-content:space-between;">
+            <sc-for list="{{ stats }}" as="stat" hint-placeholder-count="4">
+              <div style="background:rgba(17,17,17,0.02);border:1px solid rgba(17,17,17,0.07);padding:15px 16px;border-radius:14px;">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#9b9a90;">{{ stat.num }} // {{ stat.label }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:#b4b3a8;">{{ stat.side }}</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;gap:14px;"><span style="{{ stat.valueStyle }}">{{ stat.value }}</span><div style="width:100px;background:rgba(17,17,17,0.08);height:8px;border-radius:999px;overflow:hidden;flex-shrink:0;"><div style="{{ stat.barStyle }}"></div></div></div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background:rgba(17,17,17,0.02);border:1px solid rgba(17,17,17,0.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;min-height:312px;position:relative;overflow:hidden;">
+            <div style="{{ consoleGlowStyle }}"></div>
+            <div style="width:100%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(17,17,17,0.07);padding-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;position:relative;z-index:1;"><span style="color:#9b9a90;text-transform:uppercase;">Interactive State Console</span><span style="{{ consoleStatusStyle }}">{{ consoleStatus }}</span></div>
+
+            <div style="margin:auto 0;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
+              <sc-if value="{{ isAutomated }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;align-items:center;animation:opFade .4s;">
+                  <div style="height:78px;width:78px;border-radius:999px;background:#ecfdf5;border:1px solid #a7f3d0;display:flex;align-items:center;justify-content:center;color:#0f8a5b;margin-bottom:16px;animation:opPulse 2s infinite;">{{ shieldCheckIcon }}</div>
+                  <h4 style="margin:0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.01em;color:#0e0e0c;">Opsfinitive Active</h4>
+                  <p style="margin:7px 0 0;font-size:12.5px;line-height:1.5;color:#56554e;max-width:240px;">Systems running at high efficiency. Runbooks are automated and alerts correlated to single-digit actionable tickets.</p>
+                  <div style="display:flex;gap:7px;align-items:center;background:#dcfce7;color:#065f46;border:1px solid #a7f3d0;border-radius:9px;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;margin-top:14px;">{{ zapIcon }} 94% REDUCTION IN RESPONSE TOIL</div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isManual }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;align-items:center;animation:opFade .4s;">
+                  <div style="height:78px;width:78px;border-radius:999px;background:#fff1f2;border:1px solid #fecdd3;display:flex;align-items:center;justify-content:center;color:#e11d48;margin-bottom:16px;animation:opPulse 1.2s infinite;">{{ alertOctIcon }}</div>
+                  <h4 style="margin:0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.01em;color:#0e0e0c;">Manual Chaos</h4>
+                  <p style="margin:7px 0 0;font-size:12.5px;line-height:1.5;color:#56554e;max-width:240px;">Ops team experiencing alarm fatigue. Engineers firefighting duplicate alerts, trying to determine what is broken manually.</p>
+                  <div style="display:flex;gap:7px;align-items:center;background:#ffe4e6;color:#9f1239;border:1px solid #fecdd3;border-radius:9px;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;margin-top:14px;">{{ flameIcon }} HIGH RISK OF REPETITIVE OUTAGES</div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div style="width:100%;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#9b9a90;position:relative;z-index:1;">CLICK TOGGLE TO FLIP OPERATIONAL PERSPECTIVES</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1200, &quot;height&quot;: 900 },
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#2f4bde&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#2f4bde&quot;, &quot;#0e0e0c&quot;, &quot;#0f8a5b&quot;, &quot;#d4501e&quot;] },
+  &quot;autoRunSandbox&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sandbox&quot; },
+  &quot;simSpeed&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;Cinematic&quot;, &quot;options&quot;: [&quot;Cinematic&quot;, &quot;Fast&quot;, &quot;Instant&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Sandbox&quot; },
+  &quot;defaultLayer&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;ITSM &amp; Service Operations&quot;, &quot;options&quot;: [&quot;ITSM &amp; Service Operations&quot;, &quot;Network &amp; Infrastructure Ops&quot;, &quot;DevSecOps &amp; Platform&quot;, &quot;Application Delivery&quot;, &quot;AI, LLM &amp; Agentic&quot;, &quot;ML, Data &amp; Observability&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Layers&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    activeStep: -1, isRunning: false, logs: [], simComplete: false,
+    activeLayer: null, selRow: 'fintech', selCol: 'agentic', hoverCol: null, hoverRow: null,
+    isAutomated: true
+  };
+
+  steps = [
+    { title: 'Alert Triage', iconName: 'alert', desc: '1,421 separate warning logs captured on DB connection pool.', activeText: 'Correlating alert torrent into a single logical failure event...', successText: 'Correlated 1,421 symptoms to 1 root cause: DB replica locking.' },
+    { title: 'RAG & AI Co-pilot', iconName: 'cpu', desc: 'AI retrieves versioned runbook "DB_Locking_Mitigation_v2.1" from repo.', activeText: 'Analyzing incident patterns and parsing retrieval-augmented documentation...', successText: 'Identified mitigation runbook. Confidence index: 98.4%.' },
+    { title: 'Blast-Radius Guard', iconName: 'shieldAlert', desc: 'Analyzing proposed command: "DbReplicaScale(2)" against system gates.', activeText: 'Validating safety boundaries and dry-running config patches...', successText: 'Proposal is within safety parameters (Blast radius weight: 8%).' },
+    { title: 'Maker / Checker Gate', iconName: 'userCheck', desc: 'Proposal presented to on-duty engineer for fast-track review.', activeText: 'Awaiting human authorization / One-click approval on Slack...', successText: 'Approved by Samir Afify (Head of Eng) in 12 seconds.' },
+    { title: 'Auto Remediate', iconName: 'checkCircle', desc: 'Applying terraform script and verifying telemetry restoration.', activeText: 'Executing automated configuration and waiting for health checks...', successText: 'Remediated! Replica scale complete. Connection pool latency: 8ms.' }
+  ];
+
+  layers = [
+    { id: 'itsm', number: '01', name: 'ITSM & Service Operations', iconName: 'layers', description: 'We turn incident, change and problem management into a measurable, automated practice — asset and CMDB hygiene, SLA tracking and service-desk integration that reflect reality instead of fighting it.', offerings: ['Service-desk integration', 'Asset / CMDB automation', 'SLA & ops dashboards'], runsAcross: ['Telecom', 'Fintech', 'Aviation'] },
+    { id: 'network', number: '02', name: 'Network & Infrastructure Ops', iconName: 'network', description: 'Automate and secure configuration management, load balancing, DNS updates, and firewall policies. Turn complex, error-prone topology management into verifiable, version-controlled actions.', offerings: ['Config drift protection', 'BGP & routing automation', 'Load balancer dynamic scale'], runsAcross: ['Satcom', 'Cloud', 'Maritime'] },
+    { id: 'devsecops', number: '03', name: 'DevSecOps & Platform', iconName: 'shield', description: 'Integrate continuous security scanning, automated secrets rotation, and environment provisioning directly into the development cycle. Build platforms that developers love and security audits pass.', offerings: ['Kubernetes GitOps', 'Secrets rotation engines', 'Automated compliance checks'], runsAcross: ['Fintech', 'Cloud', 'Telecom'] },
+    { id: 'delivery', number: '04', name: 'Application Delivery', iconName: 'play', description: 'Orchestrate seamless canary deployments, blue-green cutovers, and automated rollbacks driven by real-time latency and error rates. Zero-downtime releases at scale.', offerings: ['Canary analysis', 'Blue-green orchestration', 'Rollback automation'], runsAcross: ['Aviation', 'Cloud', 'Fintech'] },
+    { id: 'agentic', number: '05', name: 'AI, LLM & Agentic', iconName: 'cpu', description: 'Deploy governed agentic frameworks that can propose, validate, and execute operational fixes. Controlled by rigorous maker/checker steps, policy engines, and blast-radius limitations.', offerings: ['LLM triage pipelines', 'Deterministic agent gates', 'Retrieval-augmented runbooks'], runsAcross: ['Telecom', 'Aviation', 'Maritime'] },
+    { id: 'observability', number: '06', name: 'ML, Data & Observability', iconName: 'bar', description: 'Synthesize disparate telemetry feeds, log dumps, and alert torrents into a single source of truth. Detect anomalies before they manifest as customer-facing outages.', offerings: ['Multi-source alert correlation', 'Log anomaly detection', 'Predictive maintenance metrics'], runsAcross: ['Satcom', 'Maritime', 'Fintech'] }
+  ];
+
+  matrixCols = [
+    { key: 'itsm', label: 'ITSM' }, { key: 'network', label: 'Network Ops' }, { key: 'devsecops', label: 'DevSecOps' },
+    { key: 'delivery', label: 'App Delivery' }, { key: 'agentic', label: 'AI & Agentic' }, { key: 'observability', label: 'ML & Data' }
+  ];
+  matrixRows = [
+    { key: 'telecom', label: 'Telecom', status: [true, true, true, false, true, true] },
+    { key: 'satcom', label: 'Satcom', status: [true, true, false, true, true, true] },
+    { key: 'maritime', label: 'Maritime', status: [true, false, true, true, false, true] },
+    { key: 'aviation', label: 'Aviation', status: [true, true, true, true, true, false] },
+    { key: 'fintech', label: 'Fintech', status: [true, true, true, false, true, true] },
+    { key: 'cloud', label: 'Cloud', status: [true, true, true, true, true, true] }
+  ];
+  briefs = {
+    telecom: { itsm: 'Automating high-volume service desk loops for major 5G networks, resolving fiber cut tickets in seconds.', network: 'Dynamic SDN control and automated optical path switches in response to signal degradation.', devsecops: 'Secure firmware supply chains for cellular towers, checking compliance signatures automatically.', delivery: 'Coordinating blue-green updates for distributed core networks without dropped calls.', agentic: 'LLM-governed agents identifying peak bandwidth spikes and dispatching dynamic traffic routing.', observability: 'Unifying multi-million metric logs from 5G base stations to pre-emptively discover tower load issues.' },
+    satcom: { itsm: 'CMDB auto-population with orbiting transponder metadata, tracking hardware anomalies.', network: 'Automatic telemetry antenna tracking and signal steering algorithms compiled as versioned config.', devsecops: 'Hardened satellite communications gateways meeting strict military-grade security requirements.', delivery: 'Managing remote gateway software updates across global earth stations in a rolling safe window.', agentic: 'AI-agents analyzing orbital track shifts to adjust antenna look-angles with strict verification loops.', observability: 'Predictive battery decay tracking on sat payloads using deep time-series neural models.' },
+    maritime: { itsm: 'Deploying lightweight offline ITSM agents on board ocean vessel servers, syncing only over satellite paths.', network: 'Automated failover between dual-L-band and Ku-band maritime terminals on container vessels.', devsecops: 'Edge-container hardening on vessel navigation computers with secure offline vaults.', delivery: 'Remote deployment of marine weather routing updates over low-bandwidth sat links.', agentic: 'Autonomous collision-hazard route proposals waiting for crew approval with blast-radius safe gates.', observability: 'Aggregating main engine sensor telemetry to warn fleet operators of imminent component failures.' },
+    aviation: { itsm: 'Automating ground control operations checksheets, integrating airport CMDB with live baggage belts.', network: 'Baggage scanner and passenger gate terminal DNS/VLAN automated re-zoning during outages.', devsecops: 'Strict flight-manifest API server access controls and automatic token rotation systems.', delivery: 'Argo Rollouts advanced canary testing for cockpit weather notification API services.', agentic: 'Agentic flight schedule buffer optimizer proposing slot swaps under strict regulator maker/checker guidelines.', observability: 'Unifying gate radar, runway sensor feeds, and luggage transponder telemetry into a unified live cockpit.' },
+    fintech: { itsm: 'High-frequency transaction ledger monitoring with auto-remediation of database indexing blockages.', network: 'Automated security group configuration for trading network tunnels, rotating keys every hour.', devsecops: 'SOC2 / PCI-DSS compliance-as-code pipelines, failing builds if any non-compliant packages are found.', delivery: 'Releasing core ledger changes under 99.999% SLA using latency-bound micro-canaries.', agentic: 'Governed LLM agents proposing credit check threshold micro-adjustments under human supervisor clearance.', observability: 'Correlating microsecond ledger variances with cloud load-balancer alerts to prevent transaction drift.' },
+    cloud: { itsm: 'Automating multi-tenant cloud workspace provisioning and asset inventory syncing with Jira Service Management.', network: 'Automated multi-region VPC peering and transit gateway load balance provisioning.', devsecops: 'GitOps compliance guards for Kubernetes pods, auto-rejecting any image without secure hashes.', delivery: 'Managing zero-downtime microservice transitions across multiple public cloud networks simultaneously.', agentic: 'Intelligent multi-region cost optimization agent, turning off developer clusters during off-hours safely.', observability: 'Aggregating petabyte logs to discover distributed denial of service trends before firewalls trip.' }
+  };
+
+  payoffStats = [
+    { label: 'Time to resolve', before: { value: 'Hours', color: '#e11d48', pct: 95 }, after: { value: 'Minutes', color: '#0f8a5b', pct: 8 } },
+    { label: 'Repetitive toil', before: { value: 'Most of the shift', color: '#d97706', pct: 85 }, after: { value: 'Automated', color: '#0f8a5b', pct: 5 } },
+    { label: 'Alarm signal', before: { value: 'Symptom floods (thousands)', color: '#e11d48', pct: 100 }, after: { value: 'One correlated event', color: '#0f8a5b', pct: 12 } },
+    { label: 'After-hours pages', before: { value: 'Frequent / Exhausting', color: '#e11d48', pct: 80 }, after: { value: 'Rare / Protected', color: '#0f8a5b', pct: 4 } }
+  ];
+
+  icon(name, size) {
+    const P = {
+      alert: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+      cpu: '<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>',
+      shieldAlert: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+      userCheck: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>',
+      check: '<polyline points="20 6 9 17 4 12"/>',
+      checkCircle: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+      terminal: '<polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>',
+      layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+      network: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>',
+      shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+      play: '<polygon points="5 3 19 12 5 21 5 3"/>',
+      bar: '<line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>',
+      chevron: '<polyline points="9 18 15 12 9 6"/>',
+      info: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+      sparkles: '<path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/>',
+      shieldCheck: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
+      alertOct: '<polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+      zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+      flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+      rotate: '<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>'
+    };
+    return React.createElement('svg', { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', style: { display: 'block' }, dangerouslySetInnerHTML: { __html: P[name] || '' } });
+  }
+
+  hexToRgba(hex, a) {
+    const h = (hex || '#2f4bde').replace('#', '');
+    const n = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+    const r = parseInt(n.slice(0, 2), 16), g = parseInt(n.slice(2, 4), 16), b = parseInt(n.slice(4, 6), 16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+  applyAccent() {
+    if (!this._root) return;
+    const c = this.props.accentColor || '#2f4bde';
+    this._root.style.setProperty('--accent', c);
+    this._root.style.setProperty('--accent-tint', this.hexToRgba(c, 0.10));
+    this._root.style.setProperty('--accent-bd', this.hexToRgba(c, 0.32));
+  }
+  rootRef = (el) => { this._root = el; this.applyAccent(); };
+
+  componentDidMount() {
+    this.applyAccent();
+    if (this.props.autoRunSandbox) this._auto = setTimeout(() => this.startSimulation(), 700);
+  }
+  componentDidUpdate() { this.applyAccent(); }
+  componentWillUnmount() { clearTimeout(this._timer); clearTimeout(this._auto); }
+
+  defaultLayerId() {
+    const m = { 'ITSM & Service Operations': 'itsm', 'Network & Infrastructure Ops': 'network', 'DevSecOps & Platform': 'devsecops', 'Application Delivery': 'delivery', 'AI, LLM & Agentic': 'agentic', 'ML, Data & Observability': 'observability' };
+    return m[this.props.defaultLayer] || 'itsm';
+  }
+
+  durFor(idx) {
+    const base = idx === 3 ? 3500 : 2500;
+    const sp = this.props.simSpeed || 'Cinematic';
+    if (sp === 'Instant') return 350;
+    if (sp === 'Fast') return Math.round(base * 0.45);
+    return base;
+  }
+  pushLog(message, type) {
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    this.setState(st => ({ logs: [{ time, type, message }, ...st.logs] }));
+  }
+  startSimulation() {
+    if (this.state.isRunning) return;
+    this.setState({ isRunning: true, simComplete: false, logs: [], activeStep: 0 }, () => {
+      this.pushLog('INITIATING AUTONOMOUS TRIAGE PIPELINE', 'system');
+      this.runStep(0);
+    });
+  }
+  runStep(idx) {
+    this.setState({ activeStep: idx }, () => {
+      const s = this.steps[idx];
+      this.pushLog('[Step ' + (idx + 1) + '/' + this.steps.length + '] ' + s.title + ': ' + s.activeText, 'info');
+      this._timer = setTimeout(() => {
+        this.pushLog('\u2713 ' + s.successText, 'success');
+        if (idx < this.steps.length - 1) {
+          this.runStep(idx + 1);
+        } else {
+          this.setState({ isRunning: false, simComplete: true });
+          this.pushLog('AUTONOMOUS MITIGATION COMPLETE. ALL SERVICES GREEN.', 'system');
+        }
+      }, this.durFor(idx));
+    });
+  }
+  resetSimulation() {
+    clearTimeout(this._timer);
+    this.setState({ isRunning: false, activeStep: -1, logs: [], simComplete: false });
+  }
+
+  renderVals() {
+    const A = this.state;
+
+    // ---- SANDBOX ----
+    const nodeBase = { display: 'flex', gap: '16px', padding: '16px', borderRadius: '18px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', transition: 'all .3s', position: 'relative', zIndex: 1 };
+    const badgeBase = { height: '48px', width: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', flexShrink: 0, transition: 'all .3s' };
+    const titleBase = { margin: 0, fontFamily: "'Schibsted Grotesk',sans-serif", fontWeight: 700, fontSize: '14px', letterSpacing: '-0.01em' };
+    const textBase = { margin: '5px 0 0', fontSize: '12.5px', lineHeight: 1.5 };
+    const steps = this.steps.map((s, idx) => {
+      const isActive = A.activeStep === idx;
+      const isCompleted = A.activeStep > idx;
+      const nodeStyle = isActive ? { ...nodeBase, background: '#fff', borderColor: 'var(--accent)', boxShadow: '0 6px 20px rgba(17,17,17,0.07)' }
+        : isCompleted ? { ...nodeBase, background: 'rgba(15,138,91,0.025)', borderColor: 'rgba(15,138,91,0.2)' }
+        : { ...nodeBase, background: '#fff', borderColor: 'rgba(17,17,17,0.07)' };
+      const badgeStyle = isActive ? { ...badgeBase, background: 'var(--accent)', borderColor: 'var(--accent)', color: '#fff' }
+        : isCompleted ? { ...badgeBase, background: '#ecfdf5', borderColor: '#a7f3d0', color: '#0f8a5b' }
+        : { ...badgeBase, background: 'rgba(17,17,17,0.03)', borderColor: 'rgba(17,17,17,0.06)', color: '#b4b3a8' };
+      const titleStyle = { ...titleBase, color: isActive ? '#0e0e0c' : isCompleted ? '#26261f' : '#b4b3a8' };
+      const textStyle = { ...textBase, color: isActive ? '#3f3e37' : isCompleted ? '#6b6a61' : '#b4b3a8', fontWeight: isActive ? 600 : 400 };
+      return { phase: 'PHASE 0' + (idx + 1), title: s.title, text: isActive ? s.activeText : s.desc, successText: s.successText, isActive, isCompleted, iconEl: isCompleted ? this.icon('check', 20) : this.icon(s.iconName, 20), nodeStyle, badgeStyle, titleStyle, textStyle };
+    });
+    const logs = A.logs.map(l => {
+      let style = { flex: 1, minWidth: 0, color: '#a8a79c' };
+      let message = l.message;
+      if (l.type === 'system') { style = { flex: 1, minWidth: 0, color: '#e6e6e0', fontWeight: 700, letterSpacing: '0.1em', display: 'block', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '3px 0', margin: '3px 0', background: 'rgba(255,255,255,0.03)' }; message = '>>> ' + l.message; }
+      else if (l.type === 'warn') { style = { flex: 1, minWidth: 0, color: '#fbbf24', fontWeight: 600 }; message = '\u26A0 ' + l.message; }
+      else if (l.type === 'success') { style = { flex: 1, minWidth: 0, color: '#34d399', fontWeight: 600 }; }
+      return { time: l.time, message, style };
+    });
+    const progressHeight = A.activeStep >= 0 ? Math.min((A.activeStep / (this.steps.length - 1)) * 100, 100) + '%' : '0%';
+    const progressStyle = { position: 'absolute', left: '40px', top: '26px', width: '2.5px', background: 'var(--accent)', zIndex: 0, transition: 'height .55s ease-out', maxHeight: 'calc(100% - 52px)', height: progressHeight };
+    const runBtnBase = { display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '11px 18px', fontFamily: "'IBM Plex Mono',monospace", fontWeight: 600, fontSize: '12px', letterSpacing: '0.04em', borderRadius: '12px', borderWidth: '1px', borderStyle: 'solid' };
+    const runBtnStyle = A.isRunning ? { ...runBtnBase, background: 'rgba(17,17,17,0.03)', borderColor: 'rgba(17,17,17,0.1)', color: '#b4b3a8', cursor: 'not-allowed' } : { ...runBtnBase, background: '#0e0e0c', borderColor: '#0e0e0c', color: '#fff', cursor: 'pointer' };
+
+    // ---- LAYERS ----
+    const active = A.activeLayer || this.defaultLayerId();
+    const btnBase = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '16px', borderRadius: '14px', borderWidth: '1.5px', borderStyle: 'solid', borderColor: 'transparent', textAlign: 'left', cursor: 'pointer', transition: 'all .25s', width: '100%', fontFamily: 'inherit' };
+    const iconWrapBase = { display: 'flex', alignItems: 'center', justifyContent: 'center', height: '38px', width: '38px', borderRadius: '11px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', transition: 'all .25s', flexShrink: 0 };
+    const numBase = { display: 'block', fontFamily: "'IBM Plex Mono',monospace", fontSize: '10px', letterSpacing: '0.12em', fontWeight: 600 };
+    const layers = this.layers.map(l => {
+      const isActive = l.id === active;
+      return {
+        number: l.number, name: l.name, iconEl: this.icon(l.iconName, 18),
+        onSelect: () => this.setState({ activeLayer: l.id }),
+        btnStyle: isActive ? { ...btnBase, background: '#fff', borderColor: 'var(--accent)', boxShadow: '0 6px 20px rgba(17,17,17,0.06)' } : { ...btnBase, background: 'rgba(17,17,17,0.02)', borderColor: 'rgba(17,17,17,0.08)' },
+        iconWrapStyle: isActive ? { ...iconWrapBase, background: 'var(--accent-tint)', borderColor: 'transparent', color: 'var(--accent)' } : { ...iconWrapBase, background: '#fff', borderColor: 'rgba(17,17,17,0.08)', color: '#75746b' },
+        numStyle: { ...numBase, color: isActive ? 'var(--accent)' : '#9b9a90' },
+        chevStyle: { display: 'inline-flex', transition: 'all .3s', flexShrink: 0, opacity: isActive ? 1 : 0, color: isActive ? 'var(--accent)' : '#9b9a90', transform: isActive ? 'translateX(2px)' : 'none' }
+      };
+    });
+    const selObj = this.layers.find(l => l.id === active) || this.layers[0];
+    const sel = { number: selObj.number, name: selObj.name, description: selObj.description, offerings: selObj.offerings, runsAcross: selObj.runsAcross, iconEl: this.icon(selObj.iconName, 14) };
+
+    // ---- MATRIX ----
+    const thBase = { padding: '11px 6px', textAlign: 'center', borderBottom: '1px solid rgba(17,17,17,0.1)', transition: 'all .25s', borderRadius: '8px 8px 0 0' };
+    const cellBase = { height: '34px', borderRadius: '10px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .25s' };
+    const columns = this.matrixCols.map((c, idx) => ({
+      label: c.label, num: '0' + (idx + 1),
+      onEnter: () => this.setState({ hoverCol: c.key }),
+      onLeave: () => this.setState({ hoverCol: null }),
+      thStyle: A.hoverCol === c.key ? { ...thBase, color: '#0e0e0c', background: 'var(--accent-tint)' } : { ...thBase, color: '#75746b' }
+    }));
+    const rows = this.matrixRows.map(r => ({
+      label: r.label,
+      onEnter: () => this.setState({ hoverRow: r.key }),
+      onLeave: () => this.setState({ hoverRow: null }),
+      rowStyle: { borderBottom: '1px solid rgba(17,17,17,0.06)', transition: 'background .2s', background: A.hoverRow === r.key ? 'rgba(17,17,17,0.02)' : 'transparent' },
+      cells: r.status.map((ready, ci) => {
+        const colKey = this.matrixCols[ci].key;
+        const isSel = A.selRow === r.key && A.selCol === colKey;
+        const cellStyle = isSel ? { ...cellBase, background: 'var(--accent-tint)', borderColor: 'var(--accent-bd)' }
+          : (A.hoverCol === colKey ? { ...cellBase, background: 'var(--accent-tint)', borderColor: 'rgba(17,17,17,0.06)' }
+            : { ...cellBase, background: 'rgba(17,17,17,0.015)', borderColor: 'rgba(17,17,17,0.06)' });
+        const dotStyle = ready ? { display: 'inline-block', transition: 'all .25s', height: '9px', width: '9px', borderRadius: '999px', background: 'var(--accent)' } : { display: 'inline-block', transition: 'all .25s', height: '7px', width: '7px', borderRadius: '999px', background: 'rgba(17,17,17,0.18)' };
+        return { cellStyle, dotStyle, onClick: () => this.setState({ selRow: r.key, selCol: colKey }) };
+      })
+    }));
+    const rObj = this.matrixRows.find(r => r.key === A.selRow);
+    const cIdx = this.matrixCols.findIndex(c => c.key === A.selCol);
+    const cObj = this.matrixCols[cIdx];
+    const isReady = rObj && cIdx >= 0 ? rObj.status[cIdx] : false;
+    const brief = {
+      rowName: rObj ? rObj.label : '', colName: cObj ? cObj.label : '',
+      brief: (this.briefs[A.selRow] && this.briefs[A.selRow][A.selCol]) || 'Enterprise-grade deployment of automated operational pipelines tailored to sector compliance standards.',
+      isReady: !!isReady, notReady: !isReady
+    };
+
+    // ---- PAYOFF ----
+    const isAuto = A.isAutomated;
+    const valBase = { fontFamily: "'Schibsted Grotesk',sans-serif", fontWeight: 700, fontSize: '17px', letterSpacing: '-0.01em', transition: 'color .4s' };
+    const stats = this.payoffStats.map((s, idx) => {
+      const cur = isAuto ? s.after : s.before;
+      return {
+        num: '0' + (idx + 1), label: s.label, value: cur.value,
+        valueStyle: { ...valBase, color: cur.color },
+        barStyle: { height: '100%', borderRadius: '999px', transition: 'all .7s ease-out', width: cur.pct + '%', background: isAuto ? '#0f8a5b' : '#e11d48' },
+        side: isAuto ? ('Before: ' + s.before.value) : ('Goal: ' + s.after.value)
+      };
+    });
+    const toggleBase = { padding: '7px 15px', borderRadius: '9px', fontFamily: "'IBM Plex Mono',monospace", fontSize: '12px', fontWeight: 700, cursor: 'pointer', transition: 'all .25s' };
+    const manualBtnStyle = !isAuto ? { ...toggleBase, background: '#fff1f2', border: '1px solid #fecdd3', color: '#9f1239' } : { ...toggleBase, background: 'transparent', border: '1px solid transparent', color: '#9b9a90' };
+    const autoBtnStyle = isAuto ? { ...toggleBase, background: '#ecfdf5', border: '1px solid #a7f3d0', color: '#065f46', display: 'flex', alignItems: 'center', gap: '6px' } : { ...toggleBase, background: 'transparent', border: '1px solid transparent', color: '#9b9a90', display: 'flex', alignItems: 'center', gap: '6px' };
+    const consoleGlowStyle = { position: 'absolute', height: '180px', width: '180px', borderRadius: '999px', filter: 'blur(70px)', bottom: '-40px', opacity: 0.2, background: isAuto ? '#34d399' : '#fb7185', left: isAuto ? '40px' : 'auto', right: isAuto ? 'auto' : '40px' };
+
+    return {
+      rootRef: this.rootRef,
+      // sandbox
+      steps, logs, hasLogs: A.logs.length > 0, noLogs: A.logs.length === 0,
+      showProgress: A.activeStep >= 0, progressStyle,
+      showReset: A.simComplete, showRun: !A.simComplete, isRunning: A.isRunning,
+      runLabel: A.isRunning ? 'SIMULATION IN PROGRESS' : 'RUN OUTAGE SIMULATION', runBtnStyle,
+      onRun: () => this.startSimulation(), onReset: () => this.resetSimulation(),
+      runIcon: this.icon('play', 14), resetIcon: this.icon('rotate', 14),
+      terminalIcon: this.icon('terminal', 14), terminalIdleIcon: this.icon('terminal', 24),
+      inputPlaceholder: A.isRunning ? 'Autonomous processes locked for editing...' : 'Type: help / run... (Auto)',
+      // layers
+      layers, sel, chevronIcon: this.icon('chevron', 16),
+      checkSmIcon: this.icon('check', 13), alertSmIcon: this.icon('alert', 13), rotateSmIcon: this.icon('rotate', 11),
+      isITSM: active === 'itsm', isNetwork: active === 'network', isDevsecops: active === 'devsecops',
+      isDelivery: active === 'delivery', isAgentic: active === 'agentic', isObservability: active === 'observability',
+      // matrix
+      columns, rows, brief, hasBrief: true, infoIcon: this.icon('info', 20),
+      // payoff
+      stats, isAutomated: isAuto, isManual: !isAuto,
+      onManual: () => this.setState({ isAutomated: false }), onAuto: () => this.setState({ isAutomated: true }),
+      manualBtnStyle, autoBtnStyle, sparkIcon: this.icon('sparkles', 12),
+      shieldCheckIcon: this.icon('shieldCheck', 34), alertOctIcon: this.icon('alertOct', 34),
+      zapIcon: this.icon('zap', 11), flameIcon: this.icon('flame', 11),
+      consoleStatus: isAuto ? 'AUTONOMOUS ACTIVE' : 'UNREGULATED METRICS',
+      consoleStatusStyle: { fontWeight: 700, color: isAuto ? '#0f8a5b' : '#e11d48' },
+      consoleGlowStyle
+    };
+  }
+}
+</script>
+</body>
+</html>

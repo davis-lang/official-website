@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sovereign, Vendor-Neutral AI Agent Governance for SOC &amp; NOC — GCC | Opsfinitive</title>
+<meta name="description" content="Opsfinitive is a boutique, vendor-neutral, sovereign integration partner that makes AI agents production-safe in regulated, air-gapped critical operations. Delivered in the GCC and EU.">
+<meta name="keywords" content="vendor-neutral AI agent governance, sovereign agentic operations, agentic SOC, agentic NOC, air-gapped AI agents, engineering-first agentic operations, production-safe AI agents">
+<meta name="author" content="Opsfinitive Software Services FZC">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://opsfinitive.io/">
+<meta name="theme-color" content="#0a0d1a">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Opsfinitive">
+<meta property="og:title" content="Sovereign, Vendor-Neutral AI Agent Governance for SOC & NOC — GCC | Opsfinitive">
+<meta property="og:description" content="We make AI agents production-safe in regulated, air-gapped critical operations. Vendor-neutral. Sovereign. Engineering-first.">
+<meta property="og:url" content="https://opsfinitive.io/">
+<meta property="og:image" content="https://opsfinitive.io/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sovereign, Vendor-Neutral AI Agent Governance — Opsfinitive">
+<meta name="twitter:description" content="We make AI agents production-safe in regulated, air-gapped critical operations. Vendor-neutral. Sovereign. Engineering-first.">
+<meta name="twitter:image" content="https://opsfinitive.io/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://opsfinitive.io/#organization",
+      "name": "Opsfinitive",
+      "legalName": "Opsfinitive Software Services FZC",
+      "url": "https://opsfinitive.io/",
+      "logo": "https://opsfinitive.io/assets/logo-black.png",
+      "description": "Opsfinitive is a boutique, vendor-neutral, sovereign integration partner that makes AI agents production-safe in regulated, air-gapped critical operations.",
+      "slogan": "Make your agentic operations production-safe — and sovereign.",
+      "foundingLocation": "Ajman Free Zone, UAE",
+      "founder": { "@type": "Person", "name": "Davis Mathew Kuriakose", "jobTitle": "Founder & GM" },
+      "email": "info@opsfinitive.io",
+      "areaServed": [ "GCC", "United Arab Emirates", "European Union" ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Ajman Free Zone", "addressCountry": "AE" },
+      "knowsAbout": [ "vendor-neutral AI agent governance", "sovereign agentic operations", "agentic SOC", "agentic NOC", "air-gapped AI operations", "engineering-first agent design" ],
+      "sameAs": [ "https://www.linkedin.com/company/opsfinitive-io/", "https://www.crunchbase.com/organization/opsfinitive" ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://opsfinitive.io/#website",
+      "url": "https://opsfinitive.io/",
+      "name": "Opsfinitive",
+      "publisher": { "@id": "https://opsfinitive.io/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://opsfinitive.io/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is agentic operations governance?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Agentic operations governance is the control layer that validates, gates, and audits an AI agent's actions before they touch production systems. It enforces policy, blast-radius limits, and reversibility so autonomous agents can act safely in critical operations." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you make AI agents production-safe?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Opsfinitive makes AI agents production-safe by routing every action through Plumbline, our governance layer. Each action is validated against policy, gated with blast-radius limits, made reversible, and written to an immutable audit trail before it executes." }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes Opsfinitive vendor-neutral?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Plumbline governs any vendor's agents through one control layer. Opsfinitive sells no agents of its own, so the governance is neutral and never locks you into a single platform." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this run air-gapped and sovereign?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Plumbline deploys fully on-premises with no data egress, so it runs in air-gapped and disconnected environments. This makes it suitable for sovereign, regulated critical infrastructure across the GCC and EU." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you cut LLM token cost by 60-70%?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Our approach is engineering-first: we use the model only where it is genuinely irreplaceable and re-engineer the rest as deterministic code. That removes most inference calls, cutting token cost by roughly 60-70% versus an LLM-first build." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does Opsfinitive operate?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Opsfinitive is a boutique, sovereign integration partner delivering in the GCC and EU. Its beachhead is the Security Operations Center (SOC) via the Nomios channel, with depth in telecom and satcom Network Operations (NOC)." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0e0e0c"/>
+  <g transform="translate(600,400)">
+    <circle cx="-70" cy="0" r="120" fill="none" stroke="#0f8a5b" stroke-width="34"/>
+    <path d="M70 -110 V110 M-40 0 H180" stroke="#fbfbf9" stroke-width="34" stroke-linecap="round"/>
+  </g>
+  <text x="600" y="640" font-family="monospace" font-size="46" fill="#8a8a80" text-anchor="middle" letter-spacing="6">OPSFINITIVE</text>
+</svg>
+</template>
+<noscript>
+  <div style="max-width:720px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;color:#0e0e0c;line-height:1.6;">
+    <h1 style="font-size:28px;">Opsfinitive — Sovereign, vendor-neutral AI agent governance</h1>
+    <p>Opsfinitive is a boutique, vendor-neutral, sovereign integration partner that makes AI agents production-safe in regulated, air-gapped critical operations. Our product, <strong>Plumbline</strong>, is a vendor-neutral agent governance layer for SOC and NOC environments. Delivered in the GCC and EU.</p>
+    <p>Engineering-first: we use the model only where irreplaceable, cutting token cost by roughly 60–70% versus an LLM-first build. Founder &amp; GM: Davis Mathew Kuriakose. Legal entity: Opsfinitive Software Services FZC.</p>
+    <ul>
+      <li><a href="Plumbline.dc.html">Plumbline — agent governance layer</a></li>
+      <li><a href="Blog.dc.html">Blog</a></li>
+      <li>Contact: <a href="mailto:info@opsfinitive.io">info@opsfinitive.io</a></li>
+    </ul>
+  </div>
+</noscript>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="prefetch" href="Plumbline.dc.html">
+  <link rel="prefetch" href="Blog.dc.html">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    @keyframes opFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @keyframes opPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    @keyframes opSpin { to { transform: rotate(360deg); } }
+    @keyframes opMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes opMenuDrop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+    @keyframes opItemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .op-marquee-track { animation: opMarquee 46s linear infinite; }
+    .op-marquee-wrap:hover .op-marquee-track { animation-play-state: paused; }
+    .op-scroll::-webkit-scrollbar { width: 6px; }
+    .op-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.14); border-radius: 3px; }
+    .op-scroll::-webkit-scrollbar-track { background: transparent; }
+  </style>
+  <script src="image-slot.js"></script>
+</helmet>
+<div ref="{{ rootRef }}" style="--accent:#2f4bde;--accent-tint:rgba(47,75,222,0.10);--accent-bd:rgba(47,75,222,0.32);background:#fbfbf9;color:#0e0e0c;font-family:'Hanken Grotesk',system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;">
+
+  <!-- ============ NAV (shared component) ============ -->
+  <dc-import name="SiteNav" overlay="{{ true }}" base="" active="" hint-size="100%,72px"></dc-import>
+
+  <!-- ============ HERO ============ -->
+  <header id="top" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#0a0d1a;">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#0a0d1a,#141019 60%,#2a1a12);z-index:0;"></div>
+    <video ref="{{ videoRef }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+    <div style="position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(8,10,20,0.35) 0%,rgba(8,10,20,0) 30%,rgba(8,10,20,0) 55%,rgba(8,10,20,0.72) 100%);"></div>
+
+    <div style="position:relative;z-index:3;max-width:1200px;margin:0 auto;width:100%;padding:0 24px 64px;">
+      <div style="display:flex;flex-direction:column;gap:22px;align-items:flex-end;text-align:right;">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end;">
+          <a href="#contact" style="display:inline-flex;align-items:center;justify-content:center;padding:15px 30px;background:var(--accent);color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:0.02em;border:1px solid var(--accent);border-radius:999px;text-decoration:none;">Talk to us</a>
+          <a href="#sandbox" style="display:inline-flex;align-items:center;justify-content:center;padding:15px 30px;background:transparent;border:1px solid rgba(255,255,255,0.55);color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:0.02em;border-radius:999px;text-decoration:none;backdrop-filter:blur(6px);">See how it works</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ TICKER (rolling strip) ============ -->
+  <section style="background:#fff;padding:32px 0;overflow:hidden;border-top:1px solid rgba(17,17,17,0.06);border-bottom:1px solid rgba(17,17,17,0.06);">
+    <div style="text-align:center;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#9b9a90;font-weight:500;">Same operating model · across domains &amp; tools</span>
+    </div>
+    <div class="op-marquee-wrap" style="position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);">
+      <div class="op-marquee-track" style="display:flex;gap:12px;width:max-content;padding:0 6px;">
+        <sc-for list="{{ marquee }}" as="chip" hint-placeholder-count="15">
+          <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:11px 20px;border:1px solid rgba(17,17,17,0.12);border-radius:999px;background:#fff;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;letter-spacing:0.01em;color:#3f3e37;">{{ chip }}</span>
+        </sc-for>
+        <sc-for list="{{ marquee }}" as="chip" hint-placeholder-count="15">
+          <span aria-hidden="true" style="display:inline-flex;align-items:center;white-space:nowrap;padding:11px 20px;border:1px solid rgba(17,17,17,0.12);border-radius:999px;background:#fff;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;letter-spacing:0.01em;color:#3f3e37;">{{ chip }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE WORK ============ -->
+  <section id="how" style="padding:88px 0 72px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">How we work</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-top:16px;">
+        <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:0;max-width:15ch;">From adaptation to autonomy<span style="color:var(--accent);">.</span></h2>
+        <p style="font-size:15px;line-height:1.6;color:#56554e;max-width:44ch;margin:0;">We meet your operations where they are, engineer them into something measurable, then hand the routine back to governed automation.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;">
+        <sc-for list="{{ phases }}" as="ph" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 0 rgba(17,17,17,0.02);position:relative;overflow:hidden;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;justify-content:center;height:44px;width:44px;border-radius:12px;background:var(--accent-tint);color:var(--accent);">{{ ph.iconEl }}</div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;color:rgba(17,17,17,0.07);letter-spacing:-0.02em;line-height:1;">{{ ph.num }}</span>
+            </div>
+            <div>
+              <h3 style="margin:0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:21px;letter-spacing:-0.015em;color:#0e0e0c;">{{ ph.title }}</h3>
+              <p style="margin:9px 0 0;font-size:14px;line-height:1.6;color:#56554e;">{{ ph.text }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 1 · OUTAGE SANDBOX ============ -->
+  <section id="sandbox" style="padding:80px 0 64px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="background: #fdfaf0; border: 1px solid rgba(17,17,17,0.08); border-radius: 26px; padding: 30px; position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(17,17,17,0.02)">
+
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(17,17,17,0.07);padding-bottom:24px;">
+          <div style="max-width:600px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">Interactive Operational Sandbox</span>
+            </div>
+            <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,34px);line-height:1.05;letter-spacing:-0.02em;color:#0e0e0c;margin:12px 0 0;">Watch Applied AI solve an outage<span style="color:var(--accent);">.</span></h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.55;color:#56554e;max-width:46ch;">Simulate a database connection spike outage. Watch how the pipeline acts deterministically, governed by safety loops.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <sc-if value="{{ showReset }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ onReset }}" style="display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:rgba(17,17,17,0.04);border:1px solid rgba(17,17,17,0.1);color:#3f3e37;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:0.04em;border-radius:12px;cursor:pointer;">{{ resetIcon }} RESET SANDBOX</button>
+            </sc-if>
+            <sc-if value="{{ showRun }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ onRun }}" disabled="{{ isRunning }}" style="{{ runBtnStyle }}">{{ runIcon }} {{ runLabel }}</button>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:7fr 5fr;gap:30px;margin-top:30px;align-items:stretch;">
+
+          <div style="position:relative;display:flex;flex-direction:column;gap:14px;">
+            <div style="position:absolute;left:40px;top:26px;bottom:26px;width:2.5px;background:rgba(17,17,17,0.07);z-index:0;"></div>
+            <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ progressStyle }}"></div>
+            </sc-if>
+            <sc-for list="{{ steps }}" as="step" hint-placeholder-count="5">
+              <div style="{{ step.nodeStyle }}">
+                <div style="{{ step.badgeStyle }}">{{ step.iconEl }}</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                    <h4 style="{{ step.titleStyle }}">{{ step.title }}</h4>
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#b4b3a8;text-transform:uppercase;flex-shrink:0;">{{ step.phase }}</span>
+                  </div>
+                  <p style="{{ step.textStyle }}">{{ step.text }}</p>
+                  <sc-if value="{{ step.isCompleted }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0f8a5b;background:#ecfdf5;border:1px solid #a7f3d0;padding:3px 9px;border-radius:8px;letter-spacing:0.02em;">SUCCESS // {{ step.successText }}</div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;flex-direction:column;background:#0e0e0c;border:1px solid #000;border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(17,17,17,0.13);min-height:460px;">
+            <div style="background:rgba(255,255,255,0.04);padding:12px 14px;border-bottom:1px solid rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+              <div style="display:flex;align-items:center;gap:8px;color:#75746b;">{{ terminalIcon }}<span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#a8a79c;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Telemetry Log Terminal</span></div>
+              <div style="display:flex;gap:6px;"><span style="height:8px;width:8px;border-radius:999px;background:rgba(244,63,94,0.6);"></span><span style="height:8px;width:8px;border-radius:999px;background:rgba(245,158,11,0.6);"></span><span style="height:8px;width:8px;border-radius:999px;background:rgba(16,185,129,0.6);"></span></div>
+            </div>
+            <div class="op-scroll" style="padding:16px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.5;color:#a8a79c;">
+              <sc-if value="{{ hasLogs }}" hint-placeholder-val="{{ false }}">
+                <sc-for list="{{ logs }}" as="log" hint-placeholder-count="3">
+                  <div style="display:flex;gap:8px;align-items:flex-start;animation:opFade .25s;">
+                    <span style="color:#56554e;flex-shrink:0;font-size:10px;user-select:none;">{{ log.time }}</span>
+                    <span style="{{ log.style }}">{{ log.message }}</span>
+                  </div>
+                </sc-for>
+              </sc-if>
+              <sc-if value="{{ noLogs }}" hint-placeholder-val="{{ true }}">
+                <div style="margin:auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;color:#54534b;">{{ terminalIdleIcon }}<span style="font-size:10px;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Terminal idle. Re-trigger sandbox simulation above.</span></div>
+              </sc-if>
+            </div>
+            <div style="background:rgba(255,255,255,0.03);padding:11px 12px;border-top:1px solid rgba(0,0,0,0.4);flex-shrink:0;display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#75746b;">
+              <span style="color:#a8a79c;font-weight:700;animation:opPulse 1.4s infinite;">&gt;</span>
+              <input type="text" readOnly="{{ true }}" placeholder="{{ inputPlaceholder }}" style="background:transparent;border:none;outline:none;flex:1;color:#a8a79c;font-family:'IBM Plex Mono',monospace;font-size:10px;pointer-events:none;">
+              <span>UTF-8 // TLS_SEC</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 · THE LAYERS WE OPERATE ============ -->
+  <section id="layers" style="padding:72px 0;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">The layers we operate</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:16ch;">We act at every layer of how you run<span style="color:var(--accent);">.</span></h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#56554e;max-width:52ch;">Each layer runs on the one below it. We can come in anywhere — and take you all the way up to governed, agentic operations.</p>
+
+      <div style="display:grid;grid-template-columns:5fr 7fr;gap:30px;margin-top:42px;align-items:stretch;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ layers }}" as="layer" hint-placeholder-count="6">
+            <button onClick="{{ layer.onSelect }}" style="{{ layer.btnStyle }}">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div style="{{ layer.iconWrapStyle }}">{{ layer.iconEl }}</div>
+                <div>
+                  <span style="{{ layer.numStyle }}">LAYER {{ layer.number }}</span>
+                  <span style="display:block;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:-0.01em;color:#0e0e0c;margin-top:2px;">{{ layer.name }}</span>
+                </div>
+              </div>
+              <span style="{{ layer.chevStyle }}">{{ chevronIcon }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <div style="display: flex; flex-direction: column; justify-content: space-between; background: #fdfaf0; border: 1px solid rgba(17,17,17,0.08); border-radius: 18px; overflow: hidden; box-shadow: 0 1px 0 rgba(17,17,17,0.02)">
+          <div style="padding:30px 32px;flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;">{{ sel.iconEl }}<span>Layer {{ sel.number }} // Operational Standard</span></div>
+            <h3 style="margin:12px 0 0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,28px);letter-spacing:-0.02em;color:#0e0e0c;">{{ sel.name }}</h3>
+            <p style="margin:16px 0 0;font-size:14.5px;line-height:1.6;color:#56554e;">{{ sel.description }}</p>
+            <div style="margin-top:24px;">
+              <h4 style="margin:0 0 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9b9a90;">Representative Offerings</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <sc-for list="{{ sel.offerings }}" as="off" hint-placeholder-count="3">
+                  <span style="padding:7px 13px;background:rgba(17,17,17,0.03);border:1px solid rgba(17,17,17,0.08);border-radius:10px;font-size:12.5px;font-weight:600;color:#56554e;">{{ off }}</span>
+                </sc-for>
+              </div>
+            </div>
+            <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(17,17,17,0.07);display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9b9a90;">Runs across:</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <sc-for list="{{ sel.runsAcross }}" as="dom" hint-placeholder-count="3">
+                  <span style="font-size:13px;font-weight:600;color:#3f3e37;">{{ dom }} •</span>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:rgba(17,17,17,0.02);border-top:1px solid rgba(17,17,17,0.07);padding:8px;">
+            <div style="background:#fff;border-radius:12px;margin:8px;border:1px solid rgba(17,17,17,0.07);position:relative;overflow:hidden;min-height:198px;">
+
+              <sc-if value="{{ isITSM }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">SLA Engine // Live Service Desk</span><span style="color:#0f8a5b;display:flex;align-items:center;gap:5px;"><span style="height:6px;width:6px;border-radius:999px;background:#0f8a5b;animation:opPulse 1.4s infinite;"></span>ONLINE</span></div>
+                  <div style="display:flex;flex-direction:column;gap:7px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><div><div style="color:#9b9a90;font-size:9px;">CORRELATED STATUS</div><div style="color:#26261f;font-weight:600;font-size:11px;">Correlated to 1 Root Cause</div></div><span style="background:#ecfdf5;color:#0f8a5b;padding:2px 8px;border-radius:6px;border:1px solid #a7f3d0;font-size:10px;">Remediated</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><div><div style="color:#9b9a90;font-size:9px;">CMDB HYGIENE</div><div style="color:#26261f;font-weight:600;font-size:11px;">Config drift auto-remediated</div></div><span style="background:#ecfdf5;color:#0f8a5b;padding:2px 8px;border-radius:6px;border:1px solid #a7f3d0;font-size:10px;">Success</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><div><div style="color:#9b9a90;font-size:9px;">CHANGE APPROVALS</div><div style="color:#26261f;font-weight:600;font-size:11px;">Change auto-approved • policy</div></div><span style="background:#ecfdf5;color:#0f8a5b;padding:2px 8px;border-radius:6px;border:1px solid #a7f3d0;font-size:10px;">Approved</span></div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:1px solid rgba(17,17,17,0.06);padding-top:9px;">
+                    <div style="background:rgba(17,17,17,0.02);padding:9px;border-radius:9px;text-align:center;border:1px solid rgba(17,17,17,0.06);"><div style="font-size:18px;font-weight:700;color:#0e0e0c;">1</div><div style="color:#9b9a90;font-size:8px;text-transform:uppercase;letter-spacing:0.14em;margin-top:2px;">Active Incidents</div></div>
+                    <div style="background:rgba(17,17,17,0.02);padding:9px;border-radius:9px;text-align:center;border:1px solid rgba(17,17,17,0.06);"><div style="font-size:18px;font-weight:700;color:#0f8a5b;">0</div><div style="color:#9b9a90;font-size:8px;text-transform:uppercase;letter-spacing:0.14em;margin-top:2px;">Outages Today</div></div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isNetwork }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">BGP &amp; Topology Observability</span><span style="color:var(--accent);animation:opPulse 1.4s infinite;font-weight:600;">SCANNING</span></div>
+                  <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="display:flex;justify-content:space-between;color:#9b9a90;font-size:9px;padding-bottom:1px;"><span>GATEWAY INTERFACES</span><span>LATENCY / DRIFT</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:500;">BGP-WAN-PRI-01 (US-East)</span><span style="color:#0f8a5b;font-weight:600;">12ms // 0.00%</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:500;">BGP-WAN-SEC-02 (EU-West)</span><span style="color:#0f8a5b;font-weight:600;">41ms // 0.00%</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:500;">Anycast DNS Sync status</span><span style="color:#0f8a5b;font-weight:600;">Synced // Active</span></div>
+                  </div>
+                  <div style="background:rgba(17,17,17,0.02);padding:9px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);font-size:9px;color:#75746b;"><div style="color:#9b9a90;">ACTIVE CONTROLLERS</div><div style="color:#3f3e37;margin-top:2px;font-weight:700;">Arista CloudVision • Integration Verified</div><div style="width:100%;background:rgba(17,17,17,0.1);height:4px;margin-top:7px;border-radius:999px;overflow:hidden;"><div style="background:#0e0e0c;height:100%;width:85%;"></div></div></div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isDevsecops }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Continuous Auditing &amp; Compliance</span><span style="color:#0f8a5b;font-weight:600;font-size:10px;">98.9% SECURE</span></div>
+                  <div style="display:flex;flex-direction:column;gap:8px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><span style="display:flex;align-items:center;gap:8px;color:#3f3e37;"><span style="color:#0f8a5b;display:inline-flex;">{{ checkSmIcon }}</span>ISO-27001 Readiness Engine</span><span style="color:#0f8a5b;font-weight:600;">PASSED</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,0.02);padding:8px 10px;border:1px solid rgba(17,17,17,0.06);border-radius:9px;"><span style="display:flex;align-items:center;gap:8px;color:#3f3e37;"><span style="color:#0f8a5b;display:inline-flex;">{{ checkSmIcon }}</span>Dynamic Secret Rotator (Vault)</span><span style="color:#9b9a90;">ACTIVE</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;background:#fffbeb;padding:8px 10px;border:1px solid #fde68a;border-radius:9px;"><span style="display:flex;align-items:center;gap:8px;color:#92400e;"><span style="color:#d97706;display:inline-flex;">{{ alertSmIcon }}</span>1 CVE Container Scan Warning</span><span style="color:#b45309;font-size:10px;background:#fef3c7;padding:2px 7px;border-radius:6px;border:1px solid #fde68a;">Triage Queue</span></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#9b9a90;padding-top:8px;border-top:1px solid rgba(17,17,17,0.06);"><span>LAST AUDIT: 4 MINS AGO</span><span style="display:flex;align-items:center;gap:5px;">{{ rotateSmIcon }} RE-AUDIT</span></div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isDelivery }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Canary Dispatcher // Argo Rollout</span><span style="background:rgba(17,17,17,0.05);color:#3f3e37;font-size:9px;padding:2px 8px;border-radius:6px;border:1px solid rgba(17,17,17,0.08);font-weight:700;">Active v2.4.1</span></div>
+                  <div style="text-align:center;">
+                    <div style="color:#9b9a90;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Traffic Distribution Weight</div>
+                    <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:#75746b;margin-bottom:5px;"><span>Stable v1</span><span>Canary v2</span></div>
+                    <div style="display:flex;height:22px;border-radius:7px;overflow:hidden;border:1px solid rgba(17,17,17,0.08);"><div style="background:rgba(17,17,17,0.12);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#3f3e37;width:85%;">85%</div><div style="background:#0e0e0c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;width:15%;">15%</div></div>
+                    <div style="font-size:9px;color:#9b9a90;margin-top:7px;">No anomalies detected in canary. Advancing automatically...</div>
+                  </div>
+                  <div style="background:rgba(17,17,17,0.02);padding:9px 10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);display:flex;justify-content:space-between;align-items:center;font-size:10px;"><div><div style="color:#9b9a90;">CANARY METRIC GATE</div><div style="color:#3f3e37;font-weight:600;">Latency threshold: &lt; 80ms</div></div><div style="color:#0f8a5b;font-weight:600;">34ms avg (Passed)</div></div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isAgentic }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Governed Agent Execution Loop</span><span style="color:#75746b;animation:opPulse 1.6s infinite;font-weight:600;">AGENT IDLE</span></div>
+                  <div style="background:rgba(17,17,17,0.02);padding:11px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);display:flex;flex-direction:column;gap:7px;">
+                    <div style="color:#9b9a90;font-size:9px;">LAST ACTIONS TRIGGERED BY AGENTS</div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;padding-bottom:6px;border-bottom:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:600;">Auto-scale DB Replica pool</span><span style="color:#0f8a5b;font-weight:700;">Approved</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;padding-bottom:6px;border-bottom:1px solid rgba(17,17,17,0.06);"><span style="color:#3f3e37;font-weight:600;">Clear cache on web-gateway-03</span><span style="color:#0f8a5b;font-weight:700;">Completed</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;"><span style="color:#3f3e37;font-weight:600;">Reboot secondary BGP tunnel</span><span style="color:#9b9a90;">Awaiting Maker Gate</span></div>
+                  </div>
+                  <div style="font-size:8px;color:#9b9a90;text-align:center;text-transform:uppercase;letter-spacing:0.1em;">Safety Boundary: Blast Radius &lt; 20% system weight</div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isObservability }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#56554e;padding:16px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(17,17,17,0.06);padding-bottom:8px;"><span style="color:#9b9a90;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;">Observability Engine // Torrent Filter</span><span style="color:#0f8a5b;font-weight:700;">CLEAN TELEMETRY</span></div>
+                  <div style="text-align:center;padding:6px 0;"><div style="font-size:24px;font-weight:700;color:#0e0e0c;letter-spacing:-0.02em;line-height:1;">14,802 / Sec</div><div style="font-size:8px;color:#9b9a90;margin-top:6px;text-transform:uppercase;letter-spacing:0.1em;">Telemetry Events Scanned</div></div>
+                  <div style="background:rgba(17,17,17,0.02);padding:10px;border-radius:9px;border:1px solid rgba(17,17,17,0.06);"><div style="color:#9b9a90;font-size:9px;">CORRELATION RATIO</div><div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:2px;"><span style="color:#26261f;font-weight:700;">1 correlated root incident</span><span style="color:#75746b;font-weight:700;font-size:10px;">From 1,294 Alerts</span></div><p style="font-size:8px;color:#9b9a90;margin:6px 0 0;">Noise reduction ratio: 99.92%. Operations team notified via PagerDuty.</p></div>
+                </div>
+              </sc-if>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 · LAYERS × VERTICALS MATRIX ============ -->
+  <section id="capabilities" style="padding:72px 0;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">Layers × Verticals</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:18ch;">Every layer. Every domain. One operating model<span style="color:var(--accent);">.</span></h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#56554e;max-width:54ch;">The disciplines are horizontal; your domain is the context. We carry the same engineering rigour across all of them — and adapt the specifics to where you operate.</p>
+
+      <div style="display:flex;flex-direction:column;gap:22px;margin-top:42px;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;min-width:780px;table-layout:fixed;">
+            <thead>
+              <tr>
+                <th style="padding:12px 10px;text-align:left;border-bottom:1px solid rgba(17,17,17,0.1);width:22%;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;font-weight:600;color:#9b9a90;">Domain / Vertical</span></th>
+                <sc-for list="{{ columns }}" as="col" hint-placeholder-count="6">
+                  <th onMouseEnter="{{ col.onEnter }}" onMouseLeave="{{ col.onLeave }}" style="{{ col.thStyle }}">
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;opacity:0.6;">{{ col.num }}</span><span style="font-size:11.5px;font-weight:700;font-family:'Schibsted Grotesk',sans-serif;letter-spacing:-0.01em;">{{ col.label }}</span></div>
+                  </th>
+                </sc-for>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ rows }}" as="row" hint-placeholder-count="6">
+                <tr onMouseEnter="{{ row.onEnter }}" onMouseLeave="{{ row.onLeave }}" style="{{ row.rowStyle }}">
+                  <td style="padding:11px 10px;text-align:left;white-space:nowrap;"><span style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#26261f;"><span style="height:6px;width:6px;border-radius:999px;background:#b4b3a8;display:inline-block;"></span>{{ row.label }}</span></td>
+                  <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="6">
+                    <td onClick="{{ cell.onClick }}" onMouseEnter="{{ cell.onEnter }}" onMouseLeave="{{ cell.onLeave }}" style="padding:6px;text-align:center;cursor:pointer;">
+                      <div style="{{ cell.cellStyle }}"><span style="{{ cell.dotStyle }}"></span></div>
+                    </td>
+                  </sc-for>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+
+        <sc-if value="{{ hasBrief }}" hint-placeholder-val="{{ true }}">
+          <div style="background: #fdfaf0; border: 1px solid rgba(17,17,17,0.08); border-radius: 16px; padding: 18px 20px; display: flex; gap: 16px; align-items: flex-start; animation: opFade .3s; box-shadow: 0 1px 0 rgba(17,17,17,0.02)">
+            <div style="padding:11px;background:rgba(17,17,17,0.02);border:1px solid rgba(17,17,17,0.08);border-radius:12px;color:var(--accent);flex-shrink:0;">{{ infoIcon }}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:#9b9a90;">Capability Matrix Spot</span>
+                <span style="font-size:12px;background:rgba(17,17,17,0.03);color:#26261f;padding:2px 10px;border-radius:999px;border:1px solid rgba(17,17,17,0.08);font-weight:600;">{{ brief.rowName }}</span>
+                <span style="color:#9b9a90;font-size:12px;">×</span>
+                <span style="font-size:12px;background:rgba(17,17,17,0.03);color:#26261f;padding:2px 10px;border-radius:999px;border:1px solid rgba(17,17,17,0.08);font-weight:600;">{{ brief.colName }}</span>
+                <sc-if value="{{ brief.isReady }}" hint-placeholder-val="{{ true }}"><span style="font-size:9px;text-transform:uppercase;font-weight:700;letter-spacing:0.12em;color:#0f8a5b;background:#ecfdf5;border:1px solid #a7f3d0;padding:3px 8px;border-radius:7px;">Deep Delivery Ready</span></sc-if>
+                <sc-if value="{{ brief.notReady }}" hint-placeholder-val="{{ false }}"><span style="font-size:9px;text-transform:uppercase;font-weight:700;letter-spacing:0.12em;color:#75746b;background:#fff;border:1px solid rgba(17,17,17,0.1);padding:3px 8px;border-radius:7px;">Custom On Request</span></sc-if>
+              </div>
+              <p style="margin:9px 0 0;font-size:14px;line-height:1.55;color:#56554e;">{{ brief.brief }}</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;align-items:center;gap:18px;justify-content:flex-end;padding-top:6px;border-top:1px solid rgba(17,17,17,0.06);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9b9a90;">
+          <span style="display:flex;align-items:center;gap:7px;"><span style="height:9px;width:9px;border-radius:999px;background:var(--accent);display:inline-block;"></span>Deep, repeated delivery</span>
+          <span style="display:flex;align-items:center;gap:7px;"><span style="height:7px;width:7px;border-radius:999px;background:rgba(17,17,17,0.18);display:inline-block;"></span>Custom integration ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 · THE PAYOFF ============ -->
+  <section style="padding:72px 0 96px;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">The Payoff</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:16ch;">What changes when operations run themselves<span style="color:var(--accent);">.</span></h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#56554e;max-width:52ch;">Illustrative of a typical engagement arc — where you land depends on where you start.</p>
+
+      <div style="background: #fdfaf0; border: 1px solid rgba(17,17,17,0.08); border-radius: 20px; padding: 30px; margin-top: 42px; box-shadow: 0 1px 0 rgba(17,17,17,0.02)">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-bottom:24px;border-bottom:1px solid rgba(17,17,17,0.07);">
+          <div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:#9b9a90;">Arc Engagement Comparison</span>
+            <h3 style="margin:6px 0 0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.01em;color:#0e0e0c;">Simulate your operational state</h3>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(17,17,17,0.03);border:1px solid rgba(17,17,17,0.08);padding:6px;border-radius:12px;">
+            <button onClick="{{ onManual }}" style="{{ manualBtnStyle }}">Manual Operations</button>
+            <button onClick="{{ onAuto }}" style="{{ autoBtnStyle }}"><span style="color:#0f8a5b;display:inline-flex;">{{ sparkIcon }}</span>With Opsfinitive</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;gap:14px;justify-content:space-between;">
+            <sc-for list="{{ stats }}" as="stat" hint-placeholder-count="4">
+              <div style="background:rgba(17,17,17,0.02);border:1px solid rgba(17,17,17,0.07);padding:15px 16px;border-radius:14px;">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#9b9a90;">{{ stat.num }} // {{ stat.label }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:#b4b3a8;">{{ stat.side }}</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;gap:14px;"><span style="{{ stat.valueStyle }}">{{ stat.value }}</span><div style="width:100px;background:rgba(17,17,17,0.08);height:8px;border-radius:999px;overflow:hidden;flex-shrink:0;"><div style="{{ stat.barStyle }}"></div></div></div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background:rgba(17,17,17,0.02);border:1px solid rgba(17,17,17,0.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;min-height:312px;position:relative;overflow:hidden;">
+            <div style="{{ consoleGlowStyle }}"></div>
+            <div style="width:100%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(17,17,17,0.07);padding-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;position:relative;z-index:1;"><span style="color:#9b9a90;text-transform:uppercase;">Interactive State Console</span><span style="{{ consoleStatusStyle }}">{{ consoleStatus }}</span></div>
+
+            <div style="margin:auto 0;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
+              <sc-if value="{{ isAutomated }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;align-items:center;animation:opFade .4s;">
+                  <div style="height:78px;width:78px;border-radius:999px;background:#ecfdf5;border:1px solid #a7f3d0;display:flex;align-items:center;justify-content:center;color:#0f8a5b;margin-bottom:16px;animation:opPulse 2s infinite;">{{ shieldCheckIcon }}</div>
+                  <h4 style="margin:0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.01em;color:#0e0e0c;">Opsfinitive Active</h4>
+                  <p style="margin:7px 0 0;font-size:12.5px;line-height:1.5;color:#56554e;max-width:240px;">Systems running at high efficiency. Runbooks are automated and alerts correlated to single-digit actionable tickets.</p>
+                  <div style="display:flex;gap:7px;align-items:center;background:#dcfce7;color:#065f46;border:1px solid #a7f3d0;border-radius:9px;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;margin-top:14px;">{{ zapIcon }} 94% REDUCTION IN RESPONSE TOIL</div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isManual }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;align-items:center;animation:opFade .4s;">
+                  <div style="height:78px;width:78px;border-radius:999px;background:#fff1f2;border:1px solid #fecdd3;display:flex;align-items:center;justify-content:center;color:#e11d48;margin-bottom:16px;animation:opPulse 1.2s infinite;">{{ alertOctIcon }}</div>
+                  <h4 style="margin:0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.01em;color:#0e0e0c;">Manual Chaos</h4>
+                  <p style="margin:7px 0 0;font-size:12.5px;line-height:1.5;color:#56554e;max-width:240px;">Ops team experiencing alarm fatigue. Engineers firefighting duplicate alerts, trying to determine what is broken manually.</p>
+                  <div style="display:flex;gap:7px;align-items:center;background:#ffe4e6;color:#9f1239;border:1px solid #fecdd3;border-radius:9px;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;margin-top:14px;">{{ flameIcon }} HIGH RISK OF REPETITIVE OUTAGES</div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div style="width:100%;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#9b9a90;position:relative;z-index:1;">CLICK TOGGLE TO FLIP OPERATIONAL PERSPECTIVES</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DELIVERABLES ============ -->
+  <section id="deliverables" style="padding:72px 0;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">What we deliver</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:16ch;">What you actually get<span style="color:var(--accent);">.</span></h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#56554e;max-width:52ch;">Not another dashboard. Working, version-controlled automation and governed agents that carry real operational load.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;">
+        <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="6">
+          <div style="background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 0 rgba(17,17,17,0.02);">
+            <div style="display:flex;align-items:center;justify-content:center;height:42px;width:42px;border-radius:11px;background:rgba(17,17,17,0.03);border:1px solid rgba(17,17,17,0.07);color:var(--accent);">{{ d.iconEl }}</div>
+            <div>
+              <h3 style="margin:0;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:16.5px;letter-spacing:-0.01em;color:#0e0e0c;">{{ d.title }}</h3>
+              <p style="margin:8px 0 0;font-size:13.5px;line-height:1.55;color:#56554e;">{{ d.text }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US + METRICS ============ -->
+  <section id="why" style="padding:72px 0;border-top:1px solid rgba(17,17,17,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;">
+        <div style="max-width:620px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">Why Opsfinitive</span>
+          </div>
+          <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:16ch;">Engineering rigour, not dashboards<span style="color:var(--accent);">.</span></h2>
+        </div>
+        <p style="font-size:15px;line-height:1.6;color:#56554e;max-width:42ch;margin:0;">Every action is version-controlled, tested and reversible. Agents operate inside maker/checker gates and blast-radius limits — so autonomy never means loss of control.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px;">
+        <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+          <div style="background:#0e0e0c;border-radius:18px;padding:26px 24px;color:#fff;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;">
+            <span style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,40px);letter-spacing:-0.02em;line-height:1;color:#fff;">{{ m.value }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.55);line-height:1.4;">{{ m.label }}</span>
+            <span style="position:absolute;top:20px;right:22px;width:7px;height:7px;border-radius:2px;background:#fbc408;"></span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:22px;position:relative;background:#fdfaf0;border:1px solid rgba(17,17,17,0.08);border-radius:20px;padding:36px 40px 56px;box-shadow:0 1px 0 rgba(17,17,17,0.02);overflow:hidden;min-height:250px;">
+        <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="2">
+          <div style="{{ t.layerStyle }}">
+            <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+              <div style="flex:1;min-width:280px;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9b9a90;font-weight:500;">{{ t.company }}</span>
+                <p style="margin:14px 0 0;font-family:'Schibsted Grotesk',sans-serif;font-weight:500;font-size:clamp(17px,2vw,21px);line-height:1.4;letter-spacing:-0.01em;color:#0e0e0c;text-wrap:pretty;">"{{ t.quote }}<span style="color:var(--accent);">"</span></p>
+                <div style="height:2px;width:40px;background:var(--accent);margin:18px 0 14px;"></div>
+                <div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:14px;color:#0e0e0c;">{{ t.name }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#75746b;letter-spacing:0.02em;margin-top:2px;">{{ t.role }}</div>
+              </div>
+              <image-slot id="{{ t.avatarId }}" src="{{ t.avatar }}" style="width:76px;height:76px;flex-shrink:0;display:block;" shape="circle" placeholder="Photo"></image-slot>
+            </div>
+          </div>
+        </sc-for>
+        <div style="position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:8px;">
+          <sc-for list="{{ dots }}" as="d" hint-placeholder-count="2">
+            <span onClick="{{ d.onClick }}" style="{{ d.style }}"></span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ (answer-first, FAQPage schema) ============ -->
+  <section id="faq" style="padding:96px 0;border-top:1px solid rgba(17,17,17,0.06);background:#fbfbf9;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;">FAQ</span>
+      </div>
+      <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4.6vw,52px);line-height:1.04;letter-spacing:-0.025em;color:#0e0e0c;margin:16px 0 0;max-width:20ch;">Questions buyers ask.</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:40px 64px;margin-top:52px;">
+        <div>
+          <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.25;letter-spacing:-0.01em;color:#0e0e0c;margin:0;">What is agentic operations governance?</h3>
+          <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#3f3e37;">Agentic operations governance is the control layer that validates, gates, and audits an AI agent's actions before they touch production systems. It enforces policy, blast-radius limits, and reversibility so autonomous agents can act safely in critical operations.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.25;letter-spacing:-0.01em;color:#0e0e0c;margin:0;">How do you make AI agents production-safe?</h3>
+          <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#3f3e37;">Opsfinitive makes AI agents production-safe by routing every action through Plumbline, our governance layer. Each action is validated against policy, gated with blast-radius limits, made reversible, and written to an immutable audit trail before it executes.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.25;letter-spacing:-0.01em;color:#0e0e0c;margin:0;">What makes Opsfinitive vendor-neutral?</h3>
+          <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#3f3e37;">Plumbline governs any vendor's agents — NVIDIA, Cisco, Microsoft, Nokia, or your own — through one control layer. Opsfinitive sells no agents of its own, so the governance is neutral and never locks you into a single platform.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.25;letter-spacing:-0.01em;color:#0e0e0c;margin:0;">Can this run air-gapped and sovereign?</h3>
+          <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#3f3e37;">Yes. Plumbline deploys fully on-premises with no data egress, so it runs in air-gapped and disconnected environments. This makes it suitable for sovereign, regulated critical infrastructure across the GCC and EU.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.25;letter-spacing:-0.01em;color:#0e0e0c;margin:0;">How do you cut LLM token cost by 60–70%?</h3>
+          <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#3f3e37;">Our approach is engineering-first: we use the model only where it is genuinely irreplaceable and re-engineer the rest as deterministic code. That removes most inference calls, cutting token cost by roughly 60–70% versus an LLM-first build.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.25;letter-spacing:-0.01em;color:#0e0e0c;margin:0;">Where does Opsfinitive operate?</h3>
+          <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#3f3e37;">Opsfinitive is a boutique, sovereign integration partner delivering in the GCC and EU. Its beachhead is the Security Operations Center (SOC) via the Nomios channel, with depth in telecom and satcom Network Operations (NOC).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / CTA ============ -->
+  <section id="contact" style="padding:96px 0;border-top:1px solid rgba(17,17,17,0.06);background:#0e0e0c;color:#fff;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(47,75,222,0.4),transparent 70%);filter:blur(20px);"></div>
+    <div style="position:absolute;bottom:-160px;left:-60px;width:360px;height:360px;border-radius:999px;background:radial-gradient(circle,rgba(251,196,8,0.16),transparent 70%);filter:blur(20px);"></div>
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1;">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px;">
+        <div style="max-width:600px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:9px;height:9px;border-radius:2px;background:#fbc408;display:inline-block;"></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:500;">Talk to us</span>
+          </div>
+          <h2 style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,5.2vw,60px);line-height:1.02;letter-spacing:-0.03em;color:#fff;margin:18px 0 0;max-width:16ch;">Ready to make operations run themselves<span style="color:#fbc408;">?</span></h2>
+          <p style="margin:20px 0 0;font-size:16px;line-height:1.6;color:rgba(255,255,255,0.72);max-width:48ch;">Tell us where you run today. We'll show you the fastest path from firefighting to governed autonomy — starting at whatever layer you're on.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:280px;">
+          <a href="mailto:info@opsfinitive.io" style="display:inline-flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;background:var(--accent);color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;border-radius:14px;text-decoration:none;">Book an intro call {{ arrowIcon }}</a>
+          <a href="#sandbox" style="display:inline-flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;border-radius:14px;text-decoration:none;">Replay the outage sandbox {{ arrowIcon }}</a>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.02em;padding-left:4px;">info@opsfinitive.io</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (shared component) ============ -->
+  <dc-import name="SiteFooter" base="" hint-size="100%,340px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1200, &quot;height&quot;: 900 },
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#0f8a5b&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#0f8a5b&quot;, &quot;#2f4bde&quot;, &quot;#0e0e0c&quot;, &quot;#d4501e&quot;] },
+  &quot;autoRunSandbox&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sandbox&quot; },
+  &quot;simSpeed&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;Cinematic&quot;, &quot;options&quot;: [&quot;Cinematic&quot;, &quot;Fast&quot;, &quot;Instant&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Sandbox&quot; },
+  &quot;defaultLayer&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;ITSM &amp; Service Operations&quot;, &quot;options&quot;: [&quot;ITSM &amp; Service Operations&quot;, &quot;Network &amp; Infrastructure Ops&quot;, &quot;DevSecOps &amp; Platform&quot;, &quot;Application Delivery&quot;, &quot;AI, LLM &amp; Agentic&quot;, &quot;ML, Data &amp; Observability&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Layers&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    activeStep: -1, isRunning: false, logs: [], simComplete: false,
+    activeLayer: null, selRow: 'fintech', selCol: 'agentic', hoverCol: null, hoverRow: null,
+    isAutomated: true, scrolled: false, blogFilter: 'All', platformOpen: false
+  };
+
+  platformProducts = [
+    { name: 'Plumbline', sub: 'Operational baseline & drift control', href: '#', target: '_self' },
+    { name: 'Assessment', sub: 'Score your operational maturity', href: 'https://assessment-kiosk.davis-cc1.workers.dev/assess', target: '_blank' }
+  ];
+
+  blogCategories = ['All', 'In production', 'News', 'Perspectives', 'Customer stories'];
+  blogPostData = [
+    { title: 'We correlated 1,400 alerts into a single incident', date: '25 Jun 2026', category: 'In production', slotId: 'blog1' },
+    { title: 'The runbook that approves itself', date: '25 Jun 2026', category: 'Perspectives', slotId: 'blog2' },
+    { title: 'Governed agents: autonomy without losing control', date: '21 Jun 2026', category: 'News', slotId: 'blog3' },
+    { title: 'From alarm fatigue to a genuinely quiet on-call', date: '14 Jun 2026', category: 'Customer stories', slotId: 'blog4' },
+    { title: 'Blast-radius limits, explained', date: '09 Jun 2026', category: 'Perspectives', slotId: 'blog5' },
+    { title: 'Why we operate at every layer of how you run', date: '02 Jun 2026', category: 'News', slotId: 'blog6' }
+  ];
+
+  verticals = ['Telecom', 'Satcom', 'Maritime', 'Aviation', 'Fintech', 'Cloud'];
+  marqueeItems = ['OpenTelemetry', 'n8n', 'RAG', 'FinOps', 'Slack', 'ServiceNow', 'Jira', 'OpenAI', 'Anthropic', 'Kubernetes', 'Terraform', 'PagerDuty', 'Datadog', 'Telecom', 'Satcom', 'Maritime', 'Aviation', 'Fintech', 'Cloud'];
+
+  phaseData = [
+    { num: '01', title: 'Adapt', iconName: 'layers', text: 'We embed into your existing stack, tools and runbooks. No rip-and-replace — we learn how you actually operate before changing anything.' },
+    { num: '02', title: 'Automate', iconName: 'play', text: 'We turn repeatable operational work into version-controlled, tested automation, with safety gates wrapped around every action.' },
+    { num: '03', title: 'Autonomous', iconName: 'cpu', text: 'Governed agents propose, validate and execute fixes under maker/checker control and blast-radius limits — routine handled, humans in command.' }
+  ];
+
+  deliverableData = [
+    { iconName: 'bar', title: 'Correlated incident response', text: 'Thousands of symptom alerts collapsed into single, actionable root-cause incidents — routed to the right owner automatically.' },
+    { iconName: 'play', title: 'Automated runbooks', text: 'Your best responders\u2019 knowledge captured as tested, version-controlled automation that runs the same way every time.' },
+    { iconName: 'cpu', title: 'Governed agent framework', text: 'Agents that propose and execute operational fixes inside maker/checker gates, policy engines and blast-radius limits.' },
+    { iconName: 'shield', title: 'Continuous compliance', text: 'Compliance-as-code pipelines and automatic secret rotation that keep SOC2, ISO-27001 and PCI-DSS audit-ready by default.' },
+    { iconName: 'network', title: 'Config & network automation', text: 'Drift protection, routing and load-balancer changes turned into verifiable, reversible, version-controlled actions.' },
+    { iconName: 'checkCircle', title: 'Zero-downtime delivery', text: 'Canary and blue-green rollouts driven by live latency and error budgets, with automated rollback the moment a gate trips.' }
+  ];
+
+  metricData = [
+    { value: '94%', label: 'Reduction in response toil' },
+    { value: '1,400:1', label: 'Alert-to-incident correlation' },
+    { value: '<20%', label: 'Max agent blast radius' },
+    { value: '12s', label: 'Median approval-to-fix' }
+  ];
+
+  steps = [
+    { title: 'Alert Triage', iconName: 'alert', desc: '1,421 separate warning logs captured on DB connection pool.', activeText: 'Correlating alert torrent into a single logical failure event...', successText: 'Correlated 1,421 symptoms to 1 root cause: DB replica locking.' },
+    { title: 'RAG & AI Co-pilot', iconName: 'cpu', desc: 'AI retrieves versioned runbook "DB_Locking_Mitigation_v2.1" from repo.', activeText: 'Analyzing incident patterns and parsing retrieval-augmented documentation...', successText: 'Identified mitigation runbook. Confidence index: 98.4%.' },
+    { title: 'Blast-Radius Guard', iconName: 'shieldAlert', desc: 'Analyzing proposed command: "DbReplicaScale(2)" against system gates.', activeText: 'Validating safety boundaries and dry-running config patches...', successText: 'Proposal is within safety parameters (Blast radius weight: 8%).' },
+    { title: 'Maker / Checker Gate', iconName: 'userCheck', desc: 'Proposal presented to on-duty engineer for fast-track review.', activeText: 'Awaiting human authorization / One-click approval on Slack...', successText: 'Approved by Samir Afify (Head of Eng) in 12 seconds.' },
+    { title: 'Auto Remediate', iconName: 'checkCircle', desc: 'Applying terraform script and verifying telemetry restoration.', activeText: 'Executing automated configuration and waiting for health checks...', successText: 'Remediated! Replica scale complete. Connection pool latency: 8ms.' }
+  ];
+
+  layers = [
+    { id: 'itsm', number: '01', name: 'ITSM & Service Operations', iconName: 'layers', description: 'We turn incident, change and problem management into a measurable, automated practice — asset and CMDB hygiene, SLA tracking and service-desk integration that reflect reality instead of fighting it.', offerings: ['Service-desk integration', 'Asset / CMDB automation', 'SLA & ops dashboards'], runsAcross: ['Telecom', 'Fintech', 'Aviation'] },
+    { id: 'network', number: '02', name: 'Network & Infrastructure Ops', iconName: 'network', description: 'Automate and secure configuration management, load balancing, DNS updates, and firewall policies. Turn complex, error-prone topology management into verifiable, version-controlled actions.', offerings: ['Config drift protection', 'BGP & routing automation', 'Load balancer dynamic scale'], runsAcross: ['Satcom', 'Cloud', 'Maritime'] },
+    { id: 'devsecops', number: '03', name: 'DevSecOps & Platform', iconName: 'shield', description: 'Integrate continuous security scanning, automated secrets rotation, and environment provisioning directly into the development cycle. Build platforms that developers love and security audits pass.', offerings: ['Kubernetes GitOps', 'Secrets rotation engines', 'Automated compliance checks'], runsAcross: ['Fintech', 'Cloud', 'Telecom'] },
+    { id: 'delivery', number: '04', name: 'Application Delivery', iconName: 'play', description: 'Orchestrate seamless canary deployments, blue-green cutovers, and automated rollbacks driven by real-time latency and error rates. Zero-downtime releases at scale.', offerings: ['Canary analysis', 'Blue-green orchestration', 'Rollback automation'], runsAcross: ['Aviation', 'Cloud', 'Fintech'] },
+    { id: 'agentic', number: '05', name: 'AI, LLM & Agentic', iconName: 'cpu', description: 'Deploy governed agentic frameworks that can propose, validate, and execute operational fixes. Controlled by rigorous maker/checker steps, policy engines, and blast-radius limitations.', offerings: ['LLM triage pipelines', 'Deterministic agent gates', 'Retrieval-augmented runbooks'], runsAcross: ['Telecom', 'Aviation', 'Maritime'] },
+    { id: 'observability', number: '06', name: 'ML, Data & Observability', iconName: 'bar', description: 'Synthesize disparate telemetry feeds, log dumps, and alert torrents into a single source of truth. Detect anomalies before they manifest as customer-facing outages.', offerings: ['Multi-source alert correlation', 'Log anomaly detection', 'Predictive maintenance metrics'], runsAcross: ['Satcom', 'Maritime', 'Fintech'] }
+  ];
+
+  matrixCols = [
+    { key: 'itsm', label: 'ITSM' }, { key: 'network', label: 'Network Ops' }, { key: 'devsecops', label: 'DevSecOps' },
+    { key: 'delivery', label: 'App Delivery' }, { key: 'agentic', label: 'AI & Agentic' }, { key: 'observability', label: 'ML & Data' }
+  ];
+  matrixRows = [
+    { key: 'telecom', label: 'Telecom', status: [true, true, true, false, true, true] },
+    { key: 'satcom', label: 'Satcom', status: [true, true, false, true, true, true] },
+    { key: 'maritime', label: 'Maritime', status: [true, true, true, true, false, true] },
+    { key: 'aviation', label: 'Aviation', status: [true, true, false, false, true, false] },
+    { key: 'fintech', label: 'Fintech', status: [true, false, false, false, true, true] },
+    { key: 'cloud', label: 'Cloud', status: [true, true, true, true, true, true] }
+  ];
+  briefs = {
+    telecom: { itsm: 'Automating high-volume service desk loops for major 5G networks, resolving fiber cut tickets in seconds.', network: 'Dynamic SDN control and automated optical path switches in response to signal degradation.', devsecops: 'Secure firmware supply chains for cellular towers, checking compliance signatures automatically.', delivery: 'Coordinating blue-green updates for distributed core networks without dropped calls.', agentic: 'LLM-governed agents identifying peak bandwidth spikes and dispatching dynamic traffic routing.', observability: 'Unifying multi-million metric logs from 5G base stations to pre-emptively discover tower load issues.' },
+    satcom: { itsm: 'CMDB auto-population with orbiting transponder metadata, tracking hardware anomalies.', network: 'Automatic telemetry antenna tracking and signal steering algorithms compiled as versioned config.', devsecops: 'Hardened satellite communications gateways meeting strict military-grade security requirements.', delivery: 'Managing remote gateway software updates across global earth stations in a rolling safe window.', agentic: 'AI-agents analyzing orbital track shifts to adjust antenna look-angles with strict verification loops.', observability: 'Predictive battery decay tracking on sat payloads using deep time-series neural models.' },
+    maritime: { itsm: 'Deploying lightweight offline ITSM agents on board ocean vessel servers, syncing only over satellite paths.', network: 'Automated failover between dual-L-band and Ku-band maritime terminals on container vessels.', devsecops: 'Edge-container hardening on vessel navigation computers with secure offline vaults.', delivery: 'Remote deployment of marine weather routing updates over low-bandwidth sat links.', agentic: 'Autonomous collision-hazard route proposals waiting for crew approval with blast-radius safe gates.', observability: 'Aggregating main engine sensor telemetry to warn fleet operators of imminent component failures.' },
+    aviation: { itsm: 'Automating ground control operations checksheets, integrating airport CMDB with live baggage belts.', network: 'Baggage scanner and passenger gate terminal DNS/VLAN automated re-zoning during outages.', devsecops: 'Strict flight-manifest API server access controls and automatic token rotation systems.', delivery: 'Argo Rollouts advanced canary testing for cockpit weather notification API services.', agentic: 'Agentic flight schedule buffer optimizer proposing slot swaps under strict regulator maker/checker guidelines.', observability: 'Unifying gate radar, runway sensor feeds, and luggage transponder telemetry into a unified live cockpit.' },
+    fintech: { itsm: 'High-frequency transaction ledger monitoring with auto-remediation of database indexing blockages.', network: 'Automated security group configuration for trading network tunnels, rotating keys every hour.', devsecops: 'SOC2 / PCI-DSS compliance-as-code pipelines, failing builds if any non-compliant packages are found.', delivery: 'Releasing core ledger changes under 99.999% SLA using latency-bound micro-canaries.', agentic: 'Governed LLM agents proposing credit check threshold micro-adjustments under human supervisor clearance.', observability: 'Correlating microsecond ledger variances with cloud load-balancer alerts to prevent transaction drift.' },
+    cloud: { itsm: 'Automating multi-tenant cloud workspace provisioning and asset inventory syncing with Jira Service Management.', network: 'Automated multi-region VPC peering and transit gateway load balance provisioning.', devsecops: 'GitOps compliance guards for Kubernetes pods, auto-rejecting any image without secure hashes.', delivery: 'Managing zero-downtime microservice transitions across multiple public cloud networks simultaneously.', agentic: 'Intelligent multi-region cost optimization agent, turning off developer clusters during off-hours safely.', observability: 'Aggregating petabyte logs to discover distributed denial of service trends before firewalls trip.' }
+  };
+
+  payoffStats = [
+    { label: 'Time to resolve', before: { value: 'Hours', color: '#e11d48', pct: 95 }, after: { value: 'Minutes', color: '#0f8a5b', pct: 8 } },
+    { label: 'Repetitive toil', before: { value: 'Most of the shift', color: '#d97706', pct: 85 }, after: { value: 'Automated', color: '#0f8a5b', pct: 5 } },
+    { label: 'Alarm signal', before: { value: 'Symptom floods (thousands)', color: '#e11d48', pct: 100 }, after: { value: 'One correlated event', color: '#0f8a5b', pct: 12 } },
+    { label: 'After-hours pages', before: { value: 'Frequent / Exhausting', color: '#e11d48', pct: 80 }, after: { value: 'Rare / Protected', color: '#0f8a5b', pct: 4 } }
+  ];
+
+  icon(name, size) {
+    const P = {
+      alert: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+      cpu: '<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>',
+      shieldAlert: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+      userCheck: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>',
+      check: '<polyline points="20 6 9 17 4 12"/>',
+      checkCircle: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+      terminal: '<polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>',
+      layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+      network: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>',
+      shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+      play: '<polygon points="5 3 19 12 5 21 5 3"/>',
+      bar: '<line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>',
+      chevron: '<polyline points="9 18 15 12 9 6"/>',
+      info: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+      sparkles: '<path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/>',
+      shieldCheck: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
+      alertOct: '<polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+      zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+      flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+      rotate: '<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>',
+      arrow: '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'
+    };
+    return React.createElement('svg', { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', style: { display: 'block' }, dangerouslySetInnerHTML: { __html: P[name] || '' } });
+  }
+
+  hexToRgba(hex, a) {
+    const h = (hex || '#2f4bde').replace('#', '');
+    const n = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+    const r = parseInt(n.slice(0, 2), 16), g = parseInt(n.slice(2, 4), 16), b = parseInt(n.slice(4, 6), 16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+  applyAccent() {
+    if (!this._root) return;
+    const c = this.props.accentColor || '#0f8a5b';
+    this._root.style.setProperty('--accent', c);
+    this._root.style.setProperty('--accent-tint', this.hexToRgba(c, 0.10));
+    this._root.style.setProperty('--accent-bd', this.hexToRgba(c, 0.32));
+  }
+  rootRef = (el) => { this._root = el; this.applyAccent(); };
+
+  tryPlay = () => { const el = this._video; if (!el) return; el.muted = true; const p = el.play(); if (p && p.catch) p.catch(() => {}); };
+  startVideo = () => {
+    const el = this._video; if (!el || this._videoStarted) return;
+    this._videoStarted = true;
+    el.muted = true; el.setAttribute('playsinline', '');
+    el.addEventListener('canplay', this.tryPlay);
+    el.addEventListener('loadeddata', this.tryPlay);
+    el.load();
+    this.tryPlay();
+  };
+  videoRef = (el) => {
+    this._video = el;
+    if (el) {
+      el.muted = true; el.setAttribute('playsinline', '');
+      // Defer the heavy video off the critical path: load after the page is ready.
+      if (document.readyState === 'complete') { setTimeout(this.startVideo, 400); }
+      else { window.addEventListener('load', () => setTimeout(this.startVideo, 400), { once: true }); }
+    }
+  };
+  onScroll = () => {
+    const sc = window.scrollY > (window.innerHeight * 0.82);
+    if (sc !== this.state.scrolled) this.setState({ scrolled: sc });
+  };
+
+  testimonialData = [
+    { company: 'Cashew', name: 'Samir Afify', role: 'Head of Engineering', avatarId: 'testi-samir', avatar: 'data:image/jpeg;base64,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', quote: 'Opsfinitive set up robust, scalable cloud infrastructure aligned with the AWS Well-Architected Framework — streamlining our processes and keeping our team aligned. Highly efficient, natural problem solvers.' },
+    { company: 'Numerique360', name: 'Santha Balaji Gopalaratnam', role: 'CTO', avatarId: 'testi-santha', avatar: 'data:image/jpeg;base64,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', quote: "Some of the best DevOps engineers I've worked with. They customised a Linux core OS and implemented BIOS-level encryption key authentication — challenging tasks handled with skill and precision." }
+  ];
+
+  componentDidMount() {
+    this.applyAccent();
+    this._testi = setInterval(() => this.setState(s => ({ testiIdx: ((s.testiIdx || 0) + 1) % this.testimonialData.length })), 5000);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    if (this.props.autoRunSandbox) this._auto = setTimeout(() => this.startSimulation(), 700);
+  }
+  componentDidUpdate() { this.applyAccent(); }
+  componentWillUnmount() { clearTimeout(this._timer); clearTimeout(this._auto); clearInterval(this._testi); window.removeEventListener('scroll', this.onScroll); }
+
+  defaultLayerId() {
+    const m = { 'ITSM & Service Operations': 'itsm', 'Network & Infrastructure Ops': 'network', 'DevSecOps & Platform': 'devsecops', 'Application Delivery': 'delivery', 'AI, LLM & Agentic': 'agentic', 'ML, Data & Observability': 'observability' };
+    return m[this.props.defaultLayer] || 'itsm';
+  }
+
+  durFor(idx) {
+    const base = idx === 3 ? 3500 : 2500;
+    const sp = this.props.simSpeed || 'Cinematic';
+    if (sp === 'Instant') return 350;
+    if (sp === 'Fast') return Math.round(base * 0.45);
+    return base;
+  }
+  pushLog(message, type) {
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    this.setState(st => ({ logs: [{ time, type, message }, ...st.logs] }));
+  }
+  startSimulation() {
+    if (this.state.isRunning) return;
+    this.setState({ isRunning: true, simComplete: false, logs: [], activeStep: 0 }, () => {
+      this.pushLog('INITIATING AUTONOMOUS TRIAGE PIPELINE', 'system');
+      this.runStep(0);
+    });
+  }
+  runStep(idx) {
+    this.setState({ activeStep: idx }, () => {
+      const s = this.steps[idx];
+      this.pushLog('[Step ' + (idx + 1) + '/' + this.steps.length + '] ' + s.title + ': ' + s.activeText, 'info');
+      this._timer = setTimeout(() => {
+        this.pushLog('\u2713 ' + s.successText, 'success');
+        if (idx < this.steps.length - 1) {
+          this.runStep(idx + 1);
+        } else {
+          this.setState({ isRunning: false, simComplete: true });
+          this.pushLog('AUTONOMOUS MITIGATION COMPLETE. ALL SERVICES GREEN.', 'system');
+        }
+      }, this.durFor(idx));
+    });
+  }
+  resetSimulation() {
+    clearTimeout(this._timer);
+    this.setState({ isRunning: false, activeStep: -1, logs: [], simComplete: false });
+  }
+
+  renderVals() {
+    const A = this.state;
+
+    // ---- SANDBOX ----
+    const nodeBase = { display: 'flex', gap: '16px', padding: '16px', borderRadius: '18px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', transition: 'all .3s', position: 'relative', zIndex: 1 };
+    const badgeBase = { height: '48px', width: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', flexShrink: 0, transition: 'all .3s' };
+    const titleBase = { margin: 0, fontFamily: "'Schibsted Grotesk',sans-serif", fontWeight: 700, fontSize: '14px', letterSpacing: '-0.01em' };
+    const textBase = { margin: '5px 0 0', fontSize: '12.5px', lineHeight: 1.5 };
+    const steps = this.steps.map((s, idx) => {
+      const isActive = A.activeStep === idx;
+      const isCompleted = A.activeStep > idx;
+      const nodeStyle = isActive ? { ...nodeBase, background: '#fff', borderColor: 'var(--accent)', boxShadow: '0 6px 20px rgba(17,17,17,0.07)' }
+        : isCompleted ? { ...nodeBase, background: 'rgba(15,138,91,0.025)', borderColor: 'rgba(15,138,91,0.2)' }
+        : { ...nodeBase, background: '#fff', borderColor: 'rgba(17,17,17,0.07)' };
+      const badgeStyle = isActive ? { ...badgeBase, background: 'var(--accent)', borderColor: 'var(--accent)', color: '#fff' }
+        : isCompleted ? { ...badgeBase, background: '#ecfdf5', borderColor: '#a7f3d0', color: '#0f8a5b' }
+        : { ...badgeBase, background: 'rgba(17,17,17,0.03)', borderColor: 'rgba(17,17,17,0.06)', color: '#b4b3a8' };
+      const titleStyle = { ...titleBase, color: isActive ? '#0e0e0c' : isCompleted ? '#26261f' : '#b4b3a8' };
+      const textStyle = { ...textBase, color: isActive ? '#3f3e37' : isCompleted ? '#6b6a61' : '#b4b3a8', fontWeight: isActive ? 600 : 400 };
+      return { phase: 'PHASE 0' + (idx + 1), title: s.title, text: isActive ? s.activeText : s.desc, successText: s.successText, isActive, isCompleted, iconEl: isCompleted ? this.icon('check', 20) : this.icon(s.iconName, 20), nodeStyle, badgeStyle, titleStyle, textStyle };
+    });
+    const logs = A.logs.map(l => {
+      let style = { flex: 1, minWidth: 0, color: '#a8a79c' };
+      let message = l.message;
+      if (l.type === 'system') { style = { flex: 1, minWidth: 0, color: '#e6e6e0', fontWeight: 700, letterSpacing: '0.1em', display: 'block', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '3px 0', margin: '3px 0', background: 'rgba(255,255,255,0.03)' }; message = '>>> ' + l.message; }
+      else if (l.type === 'warn') { style = { flex: 1, minWidth: 0, color: '#fbbf24', fontWeight: 600 }; message = '\u26A0 ' + l.message; }
+      else if (l.type === 'success') { style = { flex: 1, minWidth: 0, color: '#34d399', fontWeight: 600 }; }
+      return { time: l.time, message, style };
+    });
+    const progressHeight = A.activeStep >= 0 ? Math.min((A.activeStep / (this.steps.length - 1)) * 100, 100) + '%' : '0%';
+    const progressStyle = { position: 'absolute', left: '40px', top: '26px', width: '2.5px', background: 'var(--accent)', zIndex: 0, transition: 'height .55s ease-out', maxHeight: 'calc(100% - 52px)', height: progressHeight };
+    const runBtnBase = { display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '11px 18px', fontFamily: "'IBM Plex Mono',monospace", fontWeight: 600, fontSize: '12px', letterSpacing: '0.04em', borderRadius: '12px', borderWidth: '1px', borderStyle: 'solid' };
+    const runBtnStyle = A.isRunning ? { ...runBtnBase, background: 'rgba(17,17,17,0.03)', borderColor: 'rgba(17,17,17,0.1)', color: '#b4b3a8', cursor: 'not-allowed' } : { ...runBtnBase, background: '#0e0e0c', borderColor: '#0e0e0c', color: '#fff', cursor: 'pointer' };
+
+    // ---- LAYERS ----
+    const active = A.activeLayer || this.defaultLayerId();
+    const btnBase = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '16px', borderRadius: '14px', borderWidth: '1.5px', borderStyle: 'solid', borderColor: 'transparent', textAlign: 'left', cursor: 'pointer', transition: 'all .25s', width: '100%', fontFamily: 'inherit' };
+    const iconWrapBase = { display: 'flex', alignItems: 'center', justifyContent: 'center', height: '38px', width: '38px', borderRadius: '11px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', transition: 'all .25s', flexShrink: 0 };
+    const numBase = { display: 'block', fontFamily: "'IBM Plex Mono',monospace", fontSize: '10px', letterSpacing: '0.12em', fontWeight: 600 };
+    const layers = this.layers.map(l => {
+      const isActive = l.id === active;
+      return {
+        number: l.number, name: l.name, iconEl: this.icon(l.iconName, 18),
+        onSelect: () => this.setState({ activeLayer: l.id }),
+        btnStyle: isActive ? { ...btnBase, background: '#fff', borderColor: 'var(--accent)', boxShadow: '0 6px 20px rgba(17,17,17,0.06)' } : { ...btnBase, background: 'rgba(17,17,17,0.02)', borderColor: 'rgba(17,17,17,0.08)' },
+        iconWrapStyle: isActive ? { ...iconWrapBase, background: 'var(--accent-tint)', borderColor: 'transparent', color: 'var(--accent)' } : { ...iconWrapBase, background: '#fff', borderColor: 'rgba(17,17,17,0.08)', color: '#75746b' },
+        numStyle: { ...numBase, color: isActive ? 'var(--accent)' : '#9b9a90' },
+        chevStyle: { display: 'inline-flex', transition: 'all .3s', flexShrink: 0, opacity: isActive ? 1 : 0, color: isActive ? 'var(--accent)' : '#9b9a90', transform: isActive ? 'translateX(2px)' : 'none' }
+      };
+    });
+    const selObj = this.layers.find(l => l.id === active) || this.layers[0];
+    const sel = { number: selObj.number, name: selObj.name, description: selObj.description, offerings: selObj.offerings, runsAcross: selObj.runsAcross, iconEl: this.icon(selObj.iconName, 14) };
+
+    // ---- MATRIX ----
+    const thBase = { padding: '11px 6px', textAlign: 'center', borderBottom: '1px solid rgba(17,17,17,0.1)', transition: 'all .25s', borderRadius: '8px 8px 0 0', width: '13%' };
+    const cellBase = { height: '34px', borderRadius: '10px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .25s' };
+    const columns = this.matrixCols.map((c, idx) => ({
+      label: c.label, num: '0' + (idx + 1),
+      onEnter: () => this.setState({ hoverCol: c.key }),
+      onLeave: () => this.setState({ hoverCol: null }),
+      thStyle: A.hoverCol === c.key ? { ...thBase, color: '#0e0e0c', background: 'var(--accent-tint)' } : { ...thBase, color: '#75746b' }
+    }));
+    const rows = this.matrixRows.map(r => ({
+      label: r.label,
+      onEnter: () => this.setState({ hoverRow: r.key }),
+      onLeave: () => this.setState({ hoverRow: null }),
+      rowStyle: { borderBottom: '1px solid rgba(17,17,17,0.06)', transition: 'background .2s', background: A.hoverRow === r.key ? 'rgba(17,17,17,0.02)' : 'transparent' },
+      cells: r.status.map((ready, ci) => {
+        const colKey = this.matrixCols[ci].key;
+        const isSel = A.selRow === r.key && A.selCol === colKey;
+        const cellStyle = isSel ? { ...cellBase, background: 'var(--accent-tint)', borderColor: 'var(--accent-bd)' }
+          : (A.hoverCol === colKey ? { ...cellBase, background: 'var(--accent-tint)', borderColor: 'rgba(17,17,17,0.06)' }
+            : { ...cellBase, background: 'rgba(17,17,17,0.015)', borderColor: 'rgba(17,17,17,0.06)' });
+        const dotStyle = ready ? { display: 'inline-block', transition: 'all .25s', height: '9px', width: '9px', borderRadius: '999px', background: 'var(--accent)' } : { display: 'inline-block', transition: 'all .25s', height: '7px', width: '7px', borderRadius: '999px', background: 'rgba(17,17,17,0.18)' };
+        return { cellStyle, dotStyle, onClick: () => this.setState({ selRow: r.key, selCol: colKey }) };
+      })
+    }));
+    const rObj = this.matrixRows.find(r => r.key === A.selRow);
+    const cIdx = this.matrixCols.findIndex(c => c.key === A.selCol);
+    const cObj = this.matrixCols[cIdx];
+    const isReady = rObj && cIdx >= 0 ? rObj.status[cIdx] : false;
+    const brief = {
+      rowName: rObj ? rObj.label : '', colName: cObj ? cObj.label : '',
+      brief: (this.briefs[A.selRow] && this.briefs[A.selRow][A.selCol]) || 'Enterprise-grade deployment of automated operational pipelines tailored to sector compliance standards.',
+      isReady: !!isReady, notReady: !isReady
+    };
+
+    // ---- PAYOFF ----
+    const isAuto = A.isAutomated;
+    const valBase = { fontFamily: "'Schibsted Grotesk',sans-serif", fontWeight: 700, fontSize: '17px', letterSpacing: '-0.01em', transition: 'color .4s' };
+    const stats = this.payoffStats.map((s, idx) => {
+      const cur = isAuto ? s.after : s.before;
+      return {
+        num: '0' + (idx + 1), label: s.label, value: cur.value,
+        valueStyle: { ...valBase, color: cur.color },
+        barStyle: { height: '100%', borderRadius: '999px', transition: 'all .7s ease-out', width: cur.pct + '%', background: isAuto ? '#0f8a5b' : '#e11d48' },
+        side: isAuto ? ('Before: ' + s.before.value) : ('Goal: ' + s.after.value)
+      };
+    });
+    const toggleBase = { padding: '7px 15px', borderRadius: '9px', fontFamily: "'IBM Plex Mono',monospace", fontSize: '12px', fontWeight: 700, cursor: 'pointer', transition: 'all .25s' };
+    const manualBtnStyle = !isAuto ? { ...toggleBase, background: '#fff1f2', border: '1px solid #fecdd3', color: '#9f1239' } : { ...toggleBase, background: 'transparent', border: '1px solid transparent', color: '#9b9a90' };
+    const autoBtnStyle = isAuto ? { ...toggleBase, background: '#ecfdf5', border: '1px solid #a7f3d0', color: '#065f46', display: 'flex', alignItems: 'center', gap: '6px' } : { ...toggleBase, background: 'transparent', border: '1px solid transparent', color: '#9b9a90', display: 'flex', alignItems: 'center', gap: '6px' };
+    const consoleGlowStyle = { position: 'absolute', height: '180px', width: '180px', borderRadius: '999px', filter: 'blur(70px)', bottom: '-40px', opacity: 0.2, background: isAuto ? '#34d399' : '#fb7185', left: isAuto ? '40px' : 'auto', right: isAuto ? 'auto' : '40px' };
+
+    // ---- NAV / HERO / WRAPPER ----
+    const scrolled = A.scrolled || A.platformOpen;
+    const menuOpen = A.platformOpen;
+    const navStyle = {
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50, transition: 'background .3s, backdrop-filter .3s, border-color .3s',
+      background: menuOpen ? '#ffffff' : (A.scrolled ? 'rgba(251,251,249,0.88)' : 'transparent'),
+      backdropFilter: menuOpen ? 'none' : (A.scrolled ? 'saturate(180%) blur(14px)' : 'none'),
+      borderBottom: menuOpen ? '1px solid transparent' : (A.scrolled ? '1px solid rgba(17,17,17,0.08)' : '1px solid transparent')
+    };
+    const navLinkStyle = {
+      fontFamily: "'Hanken Grotesk',system-ui,sans-serif", fontSize: '15px', fontWeight: 500, letterSpacing: '0',
+      textDecoration: 'none', transition: 'color .25s',
+      color: scrolled ? '#3f3e37' : 'rgba(255,255,255,0.9)'
+    };
+    const platformTriggerStyle = { ...navLinkStyle, display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' };
+    const platformChevron = React.createElement('svg', { width: 13, height: 13, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round', style: { transition: 'transform .2s', transform: A.platformOpen ? 'rotate(180deg)' : 'none' } }, React.createElement('polyline', { points: '6 9 12 15 18 9' }));
+    const navGhostStyle = {
+      fontFamily: "'Hanken Grotesk',system-ui,sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none',
+      padding: '10px 22px', borderRadius: '999px', transition: 'all .25s', background: 'transparent',
+      border: scrolled ? '1px solid rgba(17,17,17,0.18)' : '1px solid rgba(255,255,255,0.5)',
+      color: scrolled ? '#0e0e0c' : '#fff'
+    };
+    const navCtaStyle = {
+      fontFamily: "'Hanken Grotesk',system-ui,sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none',
+      padding: '10px 22px', borderRadius: '999px', transition: 'all .25s',
+      background: scrolled ? 'var(--accent)' : '#fff', color: scrolled ? '#fff' : '#0e0e0c'
+    };
+    const phases = this.phaseData.map(p => ({ num: p.num, title: p.title, text: p.text, iconEl: this.icon(p.iconName, 22) }));
+    const deliverables = this.deliverableData.map(d => ({ title: d.title, text: d.text, iconEl: this.icon(d.iconName, 20) }));
+
+    const chipBase = { padding: '9px 17px', borderRadius: '999px', fontFamily: "'Hanken Grotesk',system-ui,sans-serif", fontSize: '14px', fontWeight: 600, cursor: 'pointer', transition: 'all .2s', border: '1px solid transparent' };
+    const blogCats = this.blogCategories.map(cat => ({
+      label: cat,
+      onClick: () => this.setState({ blogFilter: cat }),
+      style: A.blogFilter === cat
+        ? { ...chipBase, background: '#0e0e0c', color: '#fff' }
+        : { ...chipBase, background: 'rgba(17,17,17,0.04)', color: '#3f3e37', borderColor: 'rgba(17,17,17,0.1)' }
+    }));
+    const blogPosts = this.blogPostData.filter(p => A.blogFilter === 'All' || p.category === A.blogFilter)
+      .map(p => ({ title: p.title, date: p.date, category: p.category, slotId: p.slotId }));
+
+    return {
+      rootRef: this.rootRef,
+      // nav + hero + wrapper
+      videoRef: this.videoRef,
+      logoWhiteStyle: { height: '26px', width: 'auto', display: 'block', transition: 'opacity .3s', opacity: scrolled ? 0 : 1 },
+      logoBlackStyle: { height: '26px', width: 'auto', display: 'block', position: 'absolute', top: 0, left: 0, transition: 'opacity .3s', opacity: scrolled ? 1 : 0 },
+      navStyle, navLinkStyle, navGhostStyle, navCtaStyle, arrowIcon: this.icon('arrow', 15),
+      platformTriggerStyle, platformChevron, platformOpen: A.platformOpen,
+      platformItems: this.platformProducts.map((p, i) => ({
+        name: p.name, sub: p.sub, href: p.href, target: p.target,
+        itemStyle: { display: 'block', padding: '13px 15px', borderRadius: '12px', textDecoration: 'none', transition: 'background .18s', animation: 'opItemIn .4s ' + (0.05 + i * 0.06).toFixed(2) + 's both' }
+      })),
+      openPlatform: () => { clearTimeout(this._platformTimer); this.setState({ platformOpen: true }); },
+      closePlatform: () => { clearTimeout(this._platformTimer); this._platformTimer = setTimeout(() => this.setState({ platformOpen: false }), 160); },
+      verticals: this.verticals, marquee: this.marqueeItems, phases, deliverables, metrics: this.metricData,
+      testimonials: this.testimonialData.map((t, i) => ({
+        company: t.company, name: t.name, role: t.role, avatarId: t.avatarId, avatar: t.avatar, quote: t.quote,
+        layerStyle: { position: i === 0 ? 'relative' : 'absolute', top: i === 0 ? 'auto' : '36px', left: i === 0 ? 'auto' : '40px', right: i === 0 ? 'auto' : '40px', transition: 'opacity .6s ease', opacity: (A.testiIdx || 0) === i ? 1 : 0, pointerEvents: (A.testiIdx || 0) === i ? 'auto' : 'none' }
+      })),
+      dots: this.testimonialData.map((t, i) => ({
+        onClick: () => this.setState({ testiIdx: i }),
+        style: { width: (A.testiIdx || 0) === i ? '22px' : '8px', height: '8px', borderRadius: '999px', background: (A.testiIdx || 0) === i ? 'var(--accent)' : 'rgba(17,17,17,0.2)', cursor: 'pointer', transition: 'all .3s' }
+      })),
+      blogCats, blogPosts,
+      // sandbox
+      steps, logs, hasLogs: A.logs.length > 0, noLogs: A.logs.length === 0,
+      showProgress: A.activeStep >= 0, progressStyle,
+      showReset: A.simComplete, showRun: !A.simComplete, isRunning: A.isRunning,
+      runLabel: A.isRunning ? 'SIMULATION IN PROGRESS' : 'RUN OUTAGE SIMULATION', runBtnStyle,
+      onRun: () => this.startSimulation(), onReset: () => this.resetSimulation(),
+      runIcon: this.icon('play', 14), resetIcon: this.icon('rotate', 14),
+      terminalIcon: this.icon('terminal', 14), terminalIdleIcon: this.icon('terminal', 24),
+      inputPlaceholder: A.isRunning ? 'Autonomous processes locked for editing...' : 'Type: help / run... (Auto)',
+      // layers
+      layers, sel, chevronIcon: this.icon('chevron', 16),
+      checkSmIcon: this.icon('check', 13), alertSmIcon: this.icon('alert', 13), rotateSmIcon: this.icon('rotate', 11),
+      isITSM: active === 'itsm', isNetwork: active === 'network', isDevsecops: active === 'devsecops',
+      isDelivery: active === 'delivery', isAgentic: active === 'agentic', isObservability: active === 'observability',
+      // matrix
+      columns, rows, brief, hasBrief: true, infoIcon: this.icon('info', 20),
+      // payoff
+      stats, isAutomated: isAuto, isManual: !isAuto,
+      onManual: () => this.setState({ isAutomated: false }), onAuto: () => this.setState({ isAutomated: true }),
+      manualBtnStyle, autoBtnStyle, sparkIcon: this.icon('sparkles', 12),
+      shieldCheckIcon: this.icon('shieldCheck', 34), alertOctIcon: this.icon('alertOct', 34),
+      zapIcon: this.icon('zap', 11), flameIcon: this.icon('flame', 11),
+      consoleStatus: isAuto ? 'AUTONOMOUS ACTIVE' : 'UNREGULATED METRICS',
+      consoleStatusStyle: { fontWeight: 700, color: isAuto ? '#0f8a5b' : '#e11d48' },
+      consoleGlowStyle
+    };
+  }
+}
+</script>
+</body>
+</html>

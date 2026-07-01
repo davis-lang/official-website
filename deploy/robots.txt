@@ -1,0 +1,40 @@
+# Opsfinitive — robots.txt
+# Default: allow everything
+User-agent: *
+Allow: /
+
+# AI / answer-engine / agentic crawlers — explicitly allowed (do not rely on absence-of-disallow)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://opsfinitive.io/sitemap.xml

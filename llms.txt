@@ -1,0 +1,34 @@
+# Opsfinitive
+
+> Opsfinitive is a boutique, vendor-neutral, sovereign integration partner that makes AI agents production-safe in regulated, air-gapped critical operations. Its product, Plumbline, is a vendor-neutral agent governance layer for SOC and NOC environments. Delivered in the GCC and EU.
+
+Opsfinitive makes AI agents production-safe in air-gapped SOC and NOC environments. The approach is engineering-first: models are used only where irreplaceable, cutting token cost by roughly 60–70% versus an LLM-first build. Legal entity: Opsfinitive Software Services FZC. Founder & GM: Davis Mathew Kuriakose.
+
+## Capabilities
+- Vendor-neutral AI agent governance (Plumbline): validate, gate, and audit any vendor's agent actions before they touch production systems.
+- Agentic SOC: production-safe AI agents for security operations, beachhead via the Nomios channel.
+- Autonomous / agentic NOC: AI-driven OSS/NMS operations for telecom and satcom networks.
+- Sovereign & air-gapped operations: fully on-prem, no data egress, deployable in disconnected environments.
+- Engineering-first agent design: re-engineer agents to reduce LLM/token cost by ~60–70%.
+- Immutable audit trails, blast-radius limits, reversible actions, and observability/replay for every governed action.
+
+## Verticals
+- SOC / Security operations (beachhead)
+- NOC / Telecom and Satcom (depth)
+- Regulated critical infrastructure
+
+## Geographies
+- GCC (UAE and wider Gulf)
+- European Union
+
+## Products
+- [Plumbline](https://opsfinitive.io/Plumbline.dc.html): Vendor-neutral governance layer that makes agentic operations production-safe and sovereign.
+
+## Pages
+- [Home](https://opsfinitive.io/): What Opsfinitive does, the operating model, and the outage sandbox demo.
+- [Plumbline](https://opsfinitive.io/Plumbline.dc.html): The agent governance product — problem, product, method, and business case.
+- [Blog](https://opsfinitive.io/Blog.dc.html): Perspectives and news on DevOps, agentic operations, and sovereignty.
+
+## Contact
+- Email: info@opsfinitive.io
+- Entity: Opsfinitive Software Services FZC, Ajman Free Zone, UAE
