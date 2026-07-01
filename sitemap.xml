@@ -20,13 +20,37 @@
   </url>
   <url>
     <loc>https://opsfinitive.io/blog-top-5-signs.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://opsfinitive.io/blog-why-devops-partner.html</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://opsfinitive.io/blog-what-is-agentic-ops-governance.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://opsfinitive.io/blog-reduce-llm-token-costs.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://opsfinitive.io/blog-sovereign-ai-agents-air-gapped.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://opsfinitive.io/blog-engineering-first-vs-api-wrapper.html</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
