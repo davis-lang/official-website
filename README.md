@@ -1,6 +1,6 @@
 # Opsfinitive Website
 
-Static marketing site for [Opsfinitive](https://opsfinitive.com). Built as Design Components (`*.dc.html`) and bundled into self-contained HTML, hosted on **Cloudflare Pages**.
+Static marketing site for [Opsfinitive](https://opsfinitive.com). Built as Design Components — DC for short — (`*.dc.html`) and bundled into self-contained HTML, hosted on **Cloudflare Workers**. The `.dc.html` files are the editable source files that can be opened directly in a browser for preview; the bundled output in `deploy/` is what gets served in production.
 
 ---
 
