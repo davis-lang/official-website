@@ -70,9 +70,11 @@ npm install -g wrangler
 
 3. **Edit source files** — modify the `.dc.html` files as needed. Cross-links between pages use clean names (`plumbline.html`, `blog.html`, etc.).
 
-4. **Re-bundle into `deploy/`** — after editing, regenerate the corresponding page in the `deploy/` directory as a self-contained HTML file:
-   - Inline all assets (CSS, JS, images as base64) **except** `assets/hero.mp4` (kept external so `index.html` stays under Cloudflare's 25 MiB/file limit).
-   - Ensure cross-links point to clean filenames (e.g. `Plumbline.dc.html` → `plumbline.html`).
+4. **Build into `deploy/`** — run the build script to regenerate all pages:
+   ```bash
+   node build.mjs
+   ```
+   This copies all `.dc.html` pages into `deploy/` with clean filenames, rewrites cross-page links, and copies assets, runtime JS, and SEO files. No npm install or dependencies needed — plain Node.
 
 5. **Test locally** — open the bundled files in `deploy/` to verify everything renders correctly before committing.
 

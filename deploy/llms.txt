@@ -22,12 +22,12 @@ Opsfinitive makes AI agents production-safe in air-gapped SOC and NOC environmen
 - European Union
 
 ## Products
-- [Plumbline](https://opsfinitive.io/plumbline.html): Vendor-neutral governance layer that makes agentic operations production-safe and sovereign.
+- [Plumbline](https://opsfinitive.io/Plumbline.dc.html): Vendor-neutral governance layer that makes agentic operations production-safe and sovereign.
 
 ## Pages
 - [Home](https://opsfinitive.io/): What Opsfinitive does, the operating model, and the outage sandbox demo.
-- [Plumbline](https://opsfinitive.io/plumbline.html): The agent governance product — problem, product, method, and business case.
-- [Blog](https://opsfinitive.io/blog.html): Perspectives and news on DevOps, agentic operations, and sovereignty.
+- [Plumbline](https://opsfinitive.io/Plumbline.dc.html): The agent governance product — problem, product, method, and business case.
+- [Blog](https://opsfinitive.io/Blog.dc.html): Perspectives and news on DevOps, agentic operations, and sovereignty.
 
 ## Contact
 - Email: info@opsfinitive.io
