@@ -1,4 +1,4 @@
-name: Build deploy/
+name: Build & Deploy
 
 on:
   pull_request:
@@ -34,3 +34,10 @@ jobs:
         run: |
           echo "::warning::deploy/ is out of date. Run 'node build.mjs' and commit the result."
           exit 1
+
+      - name: Deploy to Cloudflare Workers
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
